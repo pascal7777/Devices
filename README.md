@@ -1,4 +1,4 @@
-# Devices
+# Medical Devices
 A tool to review medical devices
 Upon registration and login, suppliers or manufacturers can submit an expression of interest for a device published in the list by providing the required information and submitting the form online.
 
