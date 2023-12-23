@@ -1,0 +1,285 @@
+<% layout('layouts/boilerplate')%>
+    
+
+
+<div class="row">
+ 
+   
+    <h1 class="text-center">Edit Expression</h1> 
+  
+    <h3 class="text-center"><%=expression.product.name%> - <%=expression.product.type%><br>Supplier: <%=expression.supplier%></h3>
+   
+
+    <form action="/expressions/<%=expression._id%>?_method=PUT" method="POST" novalidate class = "validated-form" enctype="multipart/form-data">
+   
+    <div class="mb-3">
+            <label class="form-label" for="supCountry">Sales/Distribution</label>
+            <input class="form-control" type="text" name="expression[supCountry]" id="supCountry" value="<%=expression.supCountry%>" required>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label" for="gpuRef">GPU Case Reference</label>
+        <input class="form-control" type="text" name="expression[gpuRef]" id="gpuRef" value="<%=expression.gpuRef%>" required>
+    </div>
+
+    <div class="mb-3">
+    <label class="form-label" for="quotation">Supplier Quotation</label>
+    <input class="form-control" type="text" name="expression[quotation]" id="quotation" value="<%=expression.quotation%>" required>
+    </div>
+
+    
+    <div class="row">  
+        <div class="col-sm-4">
+        <div class="mb-3">
+        <label class="form-label" for="manufacturer">Manufacturer</label>
+        <input class="form-control" type="text" name="expression[manufacturer]" id="manufacturer" value="<%=expression.manufacturer%>" required>
+        </div>  
+        </div> 
+        <div class="col-sm-4">
+        <div class="mb-3">
+            <label class="form-label" for="mfAddress">Manufacturer Address</label>
+            <input class="form-control" type="text" name="expression[mfAddress]" id="mfAddress" value="<%=expression.mfAddress%>" required>
+        </div>  
+        </div> 
+        <div class="col-sm-4">
+        <div class="mb-3">
+            <label class="form-label" for="mfCountry">Country of Origin</label>
+            <input class="form-control" type="text" name="expression[mfCountry]" id="mfCountry" value="<%=expression.mfCountry%>" required>
+        </div> 
+        </div> 
+    </div> 
+
+    <div class="row">  
+        <div class="col-sm-4">
+        <div class="mb-3">
+            <label class="form-label" for="deviceModel">Device Model/Type (reference nr)</label>
+            <input class="form-control" type="text" name="expression[deviceModel]" id="deviceModel" value="<%=expression.deviceModel%>">
+        </div> 
+        </div> 
+        <div class="col-sm-4">
+        <div class="mb-3">
+            <label class="form-label" for="catnr">Catalogue nr</label>
+            <input class="form-control" type="text" name="expression[catnr]" id="catnr" value="<%=expression.catnr%>">
+        </div> 
+        </div> 
+        <div class="col-sm-4">
+        <div class="mb-3">
+            <label class="form-label" for="brandName">Brand Name</label>
+            <input class="form-control" type="text" name="expression[brandName]" id="brandName" value="<%=expression.brandName%>">
+        </div> 
+        </div> 
+    </div> 
+    
+
+    <br> 
+    <hr style="height:5px; border: 1px dashed rgb(6, 91, 251);background-color:gray">
+    <br>
+
+<div class="row">  
+<div class="col-3">
+<div class="mb-3">
+        <label class="form-label" for="iso9001" class="form-label">Manufacturer has a <br><strong>ISO 9001:2015 </strong>certificate (Y/N)</label>
+        <input class="form-control" list="yesno1" name="expression[iso9001]" id="iso9001" value="<%=expression.iso9001%>" required>
+        <datalist id="yesno1">
+            <option value="Yes">
+            <option value="No">
+            <option value="NA">
+        </datalist>
+</div>
+</div>
+
+<br>
+
+<div class="row">  
+<div class="col-3">
+<div class="mb-3">
+        <label class="form-label" for="iso13485" class="form-label">Manufacturer has a <br><strong>ISO 13485:2016 </strong>certificate (Y/N)</label>
+        <input class="form-control" list="yesno3" name="expression[iso13485]" id="iso13485" value="<%=expression.iso13485%>" required>
+        <datalist id="yesno3">
+            <option value="Yes">
+            <option value="No">
+            <option value="NA">
+        </datalist>
+</div>
+</div>   
+
+<br> 
+<hr style="height:5px; border: 1px dashed rgb(6, 91, 251);background-color:gray">
+<br> 
+
+    <div class="col-12">
+        <div class="mb-3">
+            <label class="form-label" for="DOC" class="form-label">EU <strong>Declaration of Conformity (DOC)</strong> Issued by the Manufacturer ? (Y/N)</label>
+            <input class="form-control" list="yesno5" name="expression[DOC]" id="DOC" value="<%=expression.DOC%>"
+                required>
+            <datalist id="yesno5">
+                <option value="Yes">
+                <option value="No">
+                </datalist>
+        </div>
+    </div>
+
+    <div class="row">
+    <div class="col-4">
+        <div class="mb-3">
+            <label class="form-label" for="DOCType" class="form-label">DOC Standard</label>
+            <input class="form-control" list="DOCstandard" name="expression[DOCType]" id="DOCType" value="<%=expression.DOCType%>">
+            <datalist id="DOCstandard">
+                <option value="(MDR)2017/745">
+                <option value="(MDD)93/42/EEC">
+                <option value="(IVDD)98/79 EC">
+                <option value="(IVDR)2017/746">   
+                </datalist>
+        </div>
+    </div>
+
+    <% if(expression.product.type==="Medical Device" ) {%>
+        <div class="col-4">
+            <div class="mb-3">
+                <label class="form-label" for="DOCMdClass" class="form-label">MD Classification (based on DOC)</label>
+                <input class="form-control" list="mdClass" name="expression[DOCMdClass]" id="DOCMdClass" value="<%=expression.DOCMdClass%>">
+                <datalist id="mdClass">
+                    <option value="I">
+                        <option value="IIa">
+                            <option value="IIb">
+                            <option value="III">
+                                <option value="IV">
+                                    <option value="NA">
+                </datalist>
+            </div>
+        </div>
+        <% } %>
+        
+        
+        <% if(expression.product.type==="In-vitro Diagnostic Medical Device (IVD)" ) {%>
+        <div class="col-4">
+            <div class="mb-3">
+                <label class="form-label" for="DOCIvdClass" class="form-label">IVD Classification (based on DOC)</label>
+                <input class="form-control" list="ivdClass" name="expression[DOCIvdClass]" id="DOCIvdClass" value="<%=expression.DOCIvdClass%>">
+                <datalist id="ivdClass">
+                    <option value="A">
+                        <option value="B">
+                            <option value="C">
+                            <option value="D">
+                                <option value="NA">
+                    </datalist>
+            </div>
+        </div>
+        <% } %>
+
+    <div class="col-4">
+        <div class="mb-3">
+            <label class="form-label" for="DOCSign" class="form-label">DOC Signed by Manufacturer? (Y/N)</label>
+            <input class="form-control" list="yesno7" name="expression[DOCSign]" id="DOCSign" value="<%=expression.DOCSign%>"
+            <datalist id="yesno7">
+                <option value="Yes">
+                <option value="No">
+                </datalist>
+        </div>
+    </div>
+
+<% if(expression.product.type==="Medical Device" ) {%>
+<div class="col-4">
+    <div class="mb-3">
+        <label class="form-label" for="DOCMdClass" class="form-label">MD Classification (based on DOC)</label>
+        <input class="form-control" list="mdClass" name="expression[DOCMdClass]" id="DOCMdClass" value="<%=expression.DOCMdClass%>">
+        <datalist id="mdClass">
+            <option value="I">
+                <option value="IIa">
+                    <option value="IIb">
+                    <option value="III">
+                        <option value="IV">
+                            <option value="NA">
+        </datalist>
+    </div>
+</div>
+<% } %>
+
+
+<% if(expression.product.type==="In-vitro Diagnostic Device" ) {%>
+<div class="col-4">
+    <div class="mb-3">
+        <label class="form-label" for="DOCIvdClass" class="form-label">IVD Classification (based on DOC)</label>
+        <input class="form-control" list="ivdClass" name="expression[DOCIvdClass]" id="DOCIvdClass" value="<%=expression.DOCIvdClass%>">
+        <datalist id="ivdClass">
+            <option value="A">
+                <option value="B">
+                    <option value="C">
+                    <option value="D">
+                        <option value="NA">
+            </datalist>
+    </div>
+</div>
+<% } %>
+
+</div>
+
+
+<div class="mb-3">
+    <label class="form-label" for="DOCEq">Any Equivalent Declaration from the manufacturer wr to device standards</label>
+    <textarea class="form-control" type="text" id="DOCEq" name="expression[DOCEq]" value="<%=expression.DOCEq%>"></textarea>
+</div>
+
+
+
+<br>  
+<hr style="height:5px; border: 1px dashed rgb(6, 91, 251);background-color:gray">
+<br>  
+
+<div class="mb-3">
+    <label class="form-label" for="CEcert" class="form-label">Does the device have a <strong>CE Certification</strong></label>
+    <input class="form-control" list="yesno8" name="expression[CEcert]" id="CEcert" value="<%=expression.CEcert%>"
+        required>
+    <datalist id="yesno8">
+        <option value="Yes">
+        <option value="No">
+        <option value="NA">
+        </datalist>
+</div>
+
+   
+    <br>  
+    <hr style="height:5px; border: 1px dashed rgb(6, 91, 251);background-color:gray">
+    <br>  
+
+    <div class="mb-3">
+    <label class="form-label" for="imageLabel" class="form-label">Image(s) of label/tag provided (Y/N)</label>
+    <input class="form-control" list="yesno6" name="expression[imageLabel]" id="imageLabel" value="<%=expression.imageLabel%>"
+        required>
+    <datalist id="yesno6">
+        <option value="Yes">
+        <option value="No">
+        </datalist>
+    </div>
+
+<br>  
+<hr style="height:5px; border: 1px dashed rgb(6, 91, 251);background-color:gray">
+<br>  
+
+
+        <div class="mb-3">
+            <label>Upload more images</label>
+          <div class="form-file custom-file">
+              <input type="file" class="form-file-input" id="image" name="image" multiple>
+              <label class="form-file-label" for="image">
+                  <span class="form-file-text custom-file-label">Select Product image(s)...</span>
+                  <span class="form-file-button">Browse</span>
+              </label>
+          </div>
+      </div>
+
+      <div class="mb-3">
+        <% expression.images.forEach(function(img, i) { %>
+        <img src="<%=img.thumbnail%>" class="img-thumbnail" alt="">
+        <div class="form-check-inline">
+            <input type="checkbox" id="image-<%=i%>" name="deleteImages[]" value="<%=img.filename%>">
+        </div>
+        <label for="image-<%=i%>">Delete?</label>
+        <% })%>
+      </div>
+
+<br>
+<div class="mb-3">
+        <button class="btn btn-primary">Update Expression</button>
+    </div>
+    </form>

@@ -1,0 +1,380 @@
+<% layout('layouts/boilerplate')%>
+    
+<div class="row">
+    
+    <div class="col-sm-8">
+        <div class="card">
+        <div class="card-body">
+                
+                <h2 style="font-size: 2em">Device: <a href="/products/<%=expression.product._id%>"><%=expression.product.name%></a></h2>
+                <h2 style="font-size: 2em"">Type/Category: <%=expression.product.cat%><%=expression.product.cat2%><%=expression.product.cat3%></h2>
+                <h2 style="font-size: 2em">Supplier: <%=expression.supplier%> - Origin: <%= expression.mfCountry%>  </h2>
+                
+                <div class="col-sm-6; mt-3; mb-3" style=" line-height:1.0">
+                        <span style="color:rgb(119, 119, 121); font-size: 0.8em"> Submitted: <%= expression.author.username%> (<%= expression.author.company%>)
+                        <br><em>On: <%= expression.createdAt.toDateString()%></em>
+                        <% if( (expression.createdAt - Date.now())/604800000 <= -1)      {%>
+                            (<%= - Math.floor( (expression.createdAt - Date.now())/1209600000)%> week(s) ago)
+                            <% } %> 
+                        </span>
+                </div>
+                <div class="col-sm-6" style=" line-height:1.0">   
+                        <% if(expression.createdAt.toDateString() != expression.updatedAt.toDateString()) {%>
+                        <span style="color:rgb(119, 119, 121); font-size: 0.8em"> Edited on:
+                        <!-- <%= expression.editor.username%> (<%= expression.editor.company%>) -->
+                        <br><em><%= expression.updatedAt.toDateString()%></em>
+                        <% if( (expression.updatedAt - Date.now())/604800000 <= -1)      {%>
+                            (<%= - Math.floor( (expression.updatedAt - Date.now())/1209600000)%> week(s) ago)
+                             <% } %>  
+                        </span>
+                        <% } %>
+                </div>
+            </div> 
+        </div>  
+    </div> 
+   
+
+    <div class="col-sm-4">
+        <div class="card">
+        <div class="card-body">
+                    
+                <h2 style="font-size: 2em">Status:</h2> 
+                
+                <h5 style="font-size: 20px"> 
+                      
+                    <% if(expression.status==="Initiated" ) {%>
+                        <span style="color:rgb(8, 96, 249)">
+                            <%=expression.status %>
+                        </span>
+                        <% } %>
+                            <% if(expression.status==="NonCompliant" ) {%>
+                                <span style="color:rgb(240, 6, 37)">
+                                    <%=expression.status %>
+                                </span>
+                                <% } %>
+
+                                <% if(expression.status==="Conditional" ) {%>
+                                    <span style="color:rgb(246, 187, 11)">
+                                        <%=expression.status %>
+                                    </span>
+                                    <% } %>
+
+                                    <% if(expression.status==="Compliant" ) {%>
+                                        <span style="color:rgba(3, 107, 14, 0.704)">
+                                            <%=expression.status %>
+                                        </span>
+                                        <% } %>
+
+                                            <% if(expression.status==="Suspended/Onhold" ) {%>
+                                                <span style="color:rgb(250, 112, 7)">
+                                                    <%=expression.status %>
+                                                </span>
+                                                <% } %>
+
+                                                <% if(expression.status==="Cancelled" ) {%>
+                                                    <span style="color:rgb(250, 7, 7)">
+                                                        <%=expression.status %>
+                                                    </span>
+                                                    <% } %>
+                                                
+                    <%  if( currentUser && currentUser.isAdmin || currentUser && currentUser.isQA) {%>
+                    <p class="mt-3"><a class="btn btn-warning btn-sm" style="padding-left: 15px; padding-right: 15px ;" href="/expressions/<%=expression._id%>/status" role="button">Change Status</a></p>         
+                    <% } %>
+                </h5> 
+                <% if(expression.condition ==="" ) {%>
+                    <h5></h5>
+                    <% } else{ %>
+                    <h5 style="font-size: 1em">Note: <%=expression.condition %> </h5>
+                <% } %>
+        </div>
+        </div>
+    </div>
+</div> 
+    
+
+
+<br>
+<div class="row">
+
+    <div class="col-sm-6">
+            <div class="card">
+              <div class="card-body">
+
+    <h5 style="font-size: 1em">Order Reference</h5>
+                <ul>
+                <li>GPU Reference:  <%= expression.gpuRef%> </li>
+                <li>Supplier Quotation: <%= expression.quotation%></li>
+                </ul>
+     <h5 style="font-size: 1em">Manufacturer</h5>
+                <ul>
+                <li><bold><%= expression.manufacturer%></bold>
+                </li>
+                <li><%= expression.mfAddress%> - <bold><%= expression.mfCountry%></bold>
+                </li>
+                </ul>
+    <h5 style="font-size: 1em">Device Model/Brand</h5>
+                <ul>
+                <li>
+                Model: <%= expression.deviceModel%>
+                </li>
+                <li>Catalogue nr: <%= expression.catnr%> 
+                </li>
+                <li>Brand Name: <%= expression.brandName%> 
+                </li>
+                </ul>
+    <h5 style="font-size: 1em">QMS ISO Certification</h5>
+                
+                <ul>
+                    <li><div class="row">                   
+                        <div class="col-sm-12">
+                    <strong>ISO 9001:2015</strong>:
+                        <a href="/expressions/<%=expression._id%>/iso9001"><%=expression.iso9001 %></a>
+                        </div>
+                        </div>
+                    </li>  
+                    <% if(expression.iso9001 ==="Yes" ) {%>
+                    <div class="row">
+                   
+                    <div class="col-sm-12">
+                        <ul>
+                        <li>Valid to: <%=expression.iso9001validTo.toDateString()%>
+                        </li>
+                                <%  if( expression.iso9001validTo < Date.now())  {%>
+                                <h3 style="font-size: 1em"><em>  <span style="color:rgb(157, 6, 6)">expired <%= moment(expression.iso9001validTo).fromNow() %></span></em></h3>  
+                               
+                                <% } else if (expression.iso9001validTo < Date.now()+1000*60*60*24*30) { %>
+                                <h3 style="font-size: 1em"><em>  <span style="color:rgb(233, 153, 5)">expires <%= moment(expression.iso9001validTo).fromNow() %></span></em></h3>  
+                                
+                                <% } else{ %>
+                                    <h3 style="font-size: 1em"><em>(<%= moment(expression.iso9001validTo).fromNow() %>)</em></h3>  
+                                <% } %>
+                        </ul>
+                    </div>
+                        <% } %>
+                    </div>
+
+
+
+                    <li><div class="row">                   
+                        <div class="col-sm-12">
+                    <strong>ISO 13485:2016</strong>:
+                        <a href="/expressions/<%=expression._id%>/iso13485"><%=expression.iso13485%></a>
+                        </div>
+                    </div>
+                    </li>   
+                    <% if(expression.iso13485 ==="Yes" ) {%>
+                    <div class="row">
+                    <div class="col-sm-12">
+                        <ul>
+                        <li>Valid to: <%=expression.iso13485validTo.toDateString()%>
+                        </li>
+                        <%  if( expression.iso13485validTo < Date.now())  {%>
+                            <h3 style="font-size: 1em"><em>  <span style="color:rgb(157, 6, 6)">expired <%= moment(expression.iso13485validTo).fromNow() %></span></em></h3>  
+                           
+                            <% } else if (expression.iso13485validTo < Date.now()+1000*60*60*24*30) { %>
+                            <h3 style="font-size: 1em"><em>  <span style="color:rgb(233, 153, 5)">expires <%= moment(expression.iso13485validTo).fromNow() %></span></em></h3>  
+                            
+                            <% } else{ %>
+                                <h3 style="font-size: 1em"><em>(<%= moment(expression.iso13485validTo).fromNow() %>)</em></h3>  
+                            <% } %>
+                        </ul>
+                    </div>
+                        <% } %>
+                    </div>
+                </ul>
+            
+    <h5 style="font-size: 1em"><strong>EU Declaration Conformity</strong></h5>
+            <ul>
+                <li>EU DOC:    <%=expression.DOC%>       </li> 
+                
+
+                <% if(expression.DOC==="Yes" ) {%>
+                <ul>
+                <li>Type: <%=expression.DOCType%></li>    
+                <li>Signed by Manufacturer?:    <%= expression.DOCSign%> </li>   <li>Device Classification: Class <%=expression.DOCMdClass%>  <%=expression.DOCIvdClass%> </li>
+                <% } %>
+                <li>Other: <%=expression.DOCEq%></li> </li>
+                </ul>
+                
+            </ul>
+
+    <h5 style="font-size: 1em">GHTF Market Clearance</h5> 
+            <ul>
+                    <li><strong>CE certification</strong>:    <a href="/expressions/<%=expression._id%>/ce"><%=expression.CEcert %>  </a>  </li>
+                    <% if(expression.CEcert ==="Yes" ) {%>
+                    <div class="row">
+                    <div class="col-sm-12">
+                        <ul>
+                        <li>Valid to: <%=expression.CEvalidTo.toDateString()%>
+                        </li>
+                        <%  if( expression.CEvalidTo < Date.now())  {%>
+                            <h3 style="font-size: 1em"><em>  <span style="color:rgb(157, 6, 6)">expired <%= moment(expression.CEvalidTo).fromNow() %></span></em></h3>  
+                           
+                            <% } else if (expression.CEvalidTo < Date.now()+1000*60*60*24*30) { %>
+                            <h3 style="font-size: 1em"><em>  <span style="color:rgb(233, 153, 5)">expires <%= moment(expression.CEvalidTo).fromNow() %></span></em></h3>  
+                            
+                            <% } else{ %>
+                                <h3 style="font-size: 1em"><em>(<%= moment(expression.CEvalidTo).fromNow() %>)</em></h3>  
+                            <% } %>
+                        </ul>
+                    </div>
+                    
+                        <% } %>
+                    </div>
+                    
+            </ul>
+
+    <h5 style="font-size: 1em">Supporting Documents</h5> 
+                <ul>
+                <li> 
+                Image(s) of label/tag or primary packaging:     <%=expression.imageLabel%> 
+                </li> 
+                <li>
+                Other Documentation:     <%=expression.otherDoc%> 
+                </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+
+              Uploaded Docs:
+               
+                <div id="expressionCarousel" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <% expression.images.forEach((img, i) => {  %>
+                        <div class="carousel-item <%= i === 0 ? 'active' : ''%>">
+                            <img src="<%= img.url%>" class="d-block w-100" alt="">
+                        </div>
+                        <% }) %>
+        
+                    </div>
+                    <% if(expression.images.length > 1) {%>
+                    <a class="carousel-control-prev" href="#expressionCarousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#expressionCarousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                    <% } %>
+                </div>
+                 
+                    
+            </div>
+        </div>
+    </div> 
+</div> 
+
+<br>
+<br>
+<div class="row">                   
+        <div class="col-sm-4">
+            <span style="color:rgb(162, 164, 165)">
+            <% if(expression.status === "Initiated" || expression.status === "Cancelled" ) {%>
+                <p> <a class="btn btn-sm btn-warning" href="/expressions/<%=expression._id%>/edit">Edit</a></p>
+            <form action="/expressions/<%=expression._id%>?_method=DELETE" method="POST">
+            <button class="btn btn-sm btn-danger">Delete</button>
+            </form>
+            <% } %>
+        </div>
+</div> 
+
+
+<br>
+
+<div class="row">
+
+    <% if(expression.status==="Initiated") {%>
+        <div class="col-12">
+            <h5 style="font-size: 1em">Initial Checks on submitted information</h5>
+            <form action="/expressions/<%=expression._id%>/checks" method="POST" class="mb-3 validated-form" novalidate>
+                <div class="mb-3">
+                </div>
+                <div class="mb-3">
+                  
+                    <textarea class="form-control" name="check[body]" id="body" cols="30" rows="3" required></textarea>
+                
+                </div>
+                <button class="btn btn-sm btn-success ">Submit</button>
+            </form>
+            <% for(let check of expression.checks) { %>
+            <div class="card mb-3 ">
+                <div class="card-body">
+                    <p class="card-text"><%= check.body %> </p>
+                    <p><em><span style="color:rgb(33, 32, 32); font-size: 0.8em" ">Author: <%= check.author.username %> at <%= check.createdAt.toDateString() %></span></em></p>
+                    <form action="/expressions/<%=expression._id%>/checks/<%=check._id%>?_method=DELETE" method="POST">
+                        <button class="btn btn-sm btn-danger">Delete</button>
+                    </form>
+                </div>
+            </div>
+            <% } %>
+        </div>
+        <% } %>
+
+
+    <% if(expression.status=== "Compliant"  || expression.status==="Conditional" ) {%>
+    <div class="col-12">
+        <h5 style="font-size: 0.8em">Remarks/Conditions</h5>
+        <form action="/expressions/<%=expression._id%>/comments" method="POST" class="mb-3 validated-form" novalidate>
+            <div class="mb-3">
+              
+                <textarea class="form-control" name="comment[body]" id="body" cols="30" rows="3" required></textarea>
+            
+            </div>
+            <button class="btn btn-sm btn-success">Submit</button>
+        </form>
+        <% for(let comment of expression.comments) { %>
+        <div class="card mb-3 ">
+            <div class="card-body">
+                <p class="card-text">Comment: <%= comment.body %></p>
+                <p><em><span style="color:rgb(33, 32, 32);  font-size: 0.8em">Author: <%= comment.author.username %> at <%= comment.createdAt.toDateString() %></span></em></p>
+                <form action="/expressions/<%=expression._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+                    <button class="btn btn-sm btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+        <% } %>
+    </div>
+    <% } %>
+
+    <% if(expression.status==="CANCELLED" || expression.status==='NonCompliant')  {%>
+    <div class="col-6">
+        <h5 style="font-size: 0.8em">Reasons for cancelling, suspension/on hold or non-compliance</h5>
+        <form action="/expressions/<%=expression._id%>/evaluations" method="POST" class="mb-3 validated-form" novalidate>
+            <div class="mb-3">
+               
+                <textarea class="form-control" name="evaluation[body]" id="body" cols="30" rows="3" required></textarea>
+            
+            </div>
+            <button class="btn btn-sm btn-success">Submit</button>
+        </form>
+        <% for(let evaluation of expression.evaluations) { %>
+        <div class="card mb-3 ">
+            <div class="card-body">
+                <p class="card-text">Evaluation: <%= evaluation.body %></p>
+                <p><em><span style="color:rgb(33, 32, 32); font-size: 0.8em">Author: <%= evaluation.author.username %> at <%= evaluation.createdAt.toDateString() %></span></em></p>
+                <form action="/expressions/<%=expression._id%>/evaluations/<%=evaluation._id%>?_method=DELETE" method="POST">
+                    <button class="btn btn-sm btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+        <% } %>
+    </div>
+    <% } %>
+
+
+   
+
+        
+
+            
+    
+
+</div>
+
+

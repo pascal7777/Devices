@@ -1,0 +1,110 @@
+<% layout('layouts/boilerplate')%>
+ 
+
+<div class="row">
+    <h1 class="text-center">Add a Device</h1>
+    
+    
+    <div class="col-6 offset-3">
+        <br>
+        <form action="/products" method="POST" novalidate class = "validated-form">
+   
+
+            <div class="mb-3 mt-3">
+                <label class="form-label" for="name">Name</label>
+                <input class="form-control" type="text" id="name" name="product[name]" required>
+            </div>
+
+<!-- 
+            <div class="mb-3">
+                    <label class="form-label" for="type" class="form-label">Device type</label>
+                    <input class="form-control" list="device_type" name="product[type]" id="type" 
+                    required>
+                     <datalist id="device_type">
+                        <option value="MD">
+                            <option value="IVD">
+                                <option value="PPE">
+                                    <option value="Other">       
+                    </datalist>
+            </div> -->
+
+
+            <div class="mb-3 mt-3">  
+                 <label class="form-label" for="cat" class="form-label">Device Type & Category</label>
+                <input class="form-control" list="device_cat" name="product[cat]" id="cat">
+                <datalist id="device_cat">
+                                    <option value="MD - Diagnostic Equipment">
+                                        <option value="MD - Monitoring Devices">
+                                        <option value="MD - Therapeutic Devices">
+                                        <option value="MD - Surgical Instruments incl. disposable lancets in IVDs, needles for blood/liquor samples">
+                                        <option value="MD - Imaging Devices">
+                                        <option value="MD - Sampling Devices incl. blood collection tubes and sputum or urine/stool sample receptables">
+                                        <option value="MD - Dental Equipment">
+                                        <option value="MD - Wearable Medical Devices">
+                                        <option value="MD - Implantable Devices">
+                                        <option value="MD - Other">
+                                        <option value="---------">
+                                        <option value="IVD - Clinical Chemistry Analysers, incl. reagents, controls, calibrators">
+                                        <option value="IVD - Immunoassay Analysers incl. reagents, controls, calibrators">
+                                        <option value="IVD - Molecular Diagnostic Tests (PCRs) incl. reagents, controls, calibrators">
+                                        <option value="IVD - Haematology Analysers incl. reagents, controls, calibrators">
+                                        <option value="IVD - Coagulation Analysers incl. reagents, controls, calibrators">                                                 
+                                        <option value="IVD - Microbiology Culture Systems incl. reagents, controls, calibrators">                
+                                        <option value="IVD - Urinalysis Analysers incl. reagents, controls, calibrators">
+                                        <option value="IVD - Electrolyte Analysers incl. reagents, controls, calibrators">
+                                        <option value="IVD - Blood Gas Analysers incl. reagents, controls, calibrators">
+                                        <option value="IVD - POCT Test kits/rapid tests incl. self/home tests"> 
+                                        <option value="IVD - Other">                                                                                                                               
+                                        <option value="---------">
+                                        <option value="Other - Hospital Equipment">
+                                        <option value="Other - Laboratory Equipment"> 
+                                        <option value="---------">
+                                        <option value="PPE - Gloves">
+                                        <option value="PPE - Masks Respirators">
+                                        <option value="PPE - Faceshields & Goggles">
+                                        <option value="PPE - Coveralls">
+                                        <option value="PPE - Gowns">
+                                        <option value="PPE - Eye Protection">
+                                        <option value="PPE - Head & Foot Covers">
+                                        <option value="PPE - Aprons">
+                                        <option value="PPE - Powered Air-Purifying Respirators (PAPRs)">
+                                        <option value="PPE - Other">   
+                                        <option value="---------">
+                                        <option value="Other - Other">      
+                </datalist>
+            </div>
+
+            <div class="mb-3 mt-3">
+                <label class="form-label" for="description">Description</label>
+                <textarea class="form-control" type="text" id="description" name="product[description]"></textarea>
+            </div>
+
+            <div class="mb-3 mt-3">
+                <label class="form-label" for="intended_use">Intended Use</label>
+                <textarea class="form-control" type="text" id="intended_use" name="product[intended_use]"></textarea>
+            </div>
+
+
+            <div class="mb-3">
+                <label class="form-label" for="demand">Demand (optional)</label>
+                <input class="form-control" type="number" id="demand" name="product[demand]">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="close">Tentative closing date to submit EOIs (sources) for this device</label>
+                <input class="form-control" type="date" id="close" name="product[close]" required>
+            </div>
+
+
+         
+            
+          
+            <br>
+            <button class="btn btn-success" >Add device</button>
+        </form>
+   
+    </div>
+</div>
+
+
+

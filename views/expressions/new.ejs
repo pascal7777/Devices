@@ -1,0 +1,534 @@
+<% layout('layouts/boilerplate')%>
+
+<div class="row">
+ 
+            <h1 class="text-center">Enter new Source for:</h1>
+
+            <h2 class="text-center">Product: <%= product.name%>  </h2>
+                <h3 class="text-center"><%= product.cat%></h3> 
+            <h3 class="text-center"><%= product.type%></h3>
+                      
+<form action="/products/<%=product._id%>/expressions" method="POST" novalidate class = "validated-form" enctype="multipart/form-data">
+   
+    <br>
+    <div class="row">  
+                <div class="col-sm-3">
+                <div class="mb-3">
+                        <label class="form-label" for="supplier">Supplier</label>
+                        <input class="form-control" type="text" id="supplier" name="supplier" required>
+                </div>
+                </div>
+                <div class="col-sm-3">
+                <div class="mb-3">
+                        <label class="form-label" for="supCountry">Sales/Distribution</label>
+                        <input class="form-control" type="text" id="supCountry" name="supCountry" required>
+                </div>
+                </div>
+                <div class="col-sm-3">
+                <div class="mb-3">
+                    <label class="form-label" for="gpuRef">GPU Case Reference</label>
+                    <input class="form-control" type="text" id="gpuRef" name="gpuRef" required>
+                </div>
+                 </div>
+                <div class="col-sm-3">
+                <div class="mb-3">
+                <label class="form-label" for="quotation">Supplier Quotation</label>
+                <input class="form-control" type="text" id="quotation" name="quotation" required>
+                </div>
+                </div>
+        </div>
+
+        <div class="row">  
+                <div class="col-sm-4">
+                <div class="mb-3">
+                    <label class="form-label" for="manufacturer">Manufacturer</label>
+                    <input class="form-control" type="text" id="manufacturer" name="manufacturer" required>
+                </div>  
+                </div>  
+                <div class="col-sm-4">
+                <div class="mb-3">
+                    <label class="form-label" for="mfAddress">City</label>
+                    <input class="form-control" type="text" id="mfAddress" name="mfAddress" required>
+                </div>  
+                </div>
+                <div class="col-sm-4">
+                <div class="mb-3">
+                    <label class="form-label" for="mfCountry">Country of Origin</label>
+                    <input class="form-control" type="text" id="mfCountry" name="mfCountry" required>
+                </div>  
+                </div>  
+        </div>  
+
+        <div class="row">  
+                <div class="col-sm-4">
+                <div class="mb-3">
+                    <label class="form-label" for="deviceModel">Device Model/Type (reference nr)</label>
+                    <input class="form-control" type="text" id="deviceModel" name="deviceModel">
+                </div> 
+                </div> 
+                <div class="col-sm-4">
+                <div class="mb-3">
+                    <label class="form-label" for="catnr">Catalogue nr</label>
+                    <input class="form-control" type="text" id="catnr" name="catnr">
+                </div> 
+                </div> 
+                <div class="col-sm-4">
+                <div class="mb-3">
+                    <label class="form-label" for="brandName">Brand Name</label>
+                    <input class="form-control" type="text" id="brandName" name="brandName">
+                </div> 
+                </div> 
+        </div> 
+    
+                    
+
+                <br> 
+                <hr style="height:5px; border: 1px dashed rgb(6, 91, 251);background-color:gray">
+                <br>
+
+    <div class="row">  
+        <div class="col-3">
+            <div class="mb-3">
+                    <label class="form-label" for="iso9001" class="form-label">Manufacturer has a <br><strong>ISO 9001:2015 </strong>certificate (Y/N)</label>
+                    <input class="form-control" list="yesno1" name="iso9001" id="iso9001">
+                    <datalist id="yesno1">
+                        <option value="Yes">
+                        <option value="No">
+                        <option value="NA">
+                    </datalist>
+            </div>
+        </div>
+
+        <div class="col-4">
+                    <div class="mb-3">
+                        <label class="form-label" for="body9001">Certifying Body<br>(name, country)</label>
+                        <input class="form-control" type="text" id="body9001" name="body9001">
+                    </div>  
+        </div>  
+
+        <div class="col-5">
+                    <div class="mb-3">
+                    <label class="form-label" for="iaf9001" class="form-label">Is the certification body listed <a href="https://www.iafcertsearch.org/search/certification-bodies?standards_id=ade51248-af9b-559f-aef1-f7329bdc20f3&standards_name=ISO%209001%3A2015" target="_blank">
+                        here </a> from one of GHTF founding member countries (EU, USA, Japan, Canada, Australia) (Y/N) </label>
+                    <input class="form-control" list="yesno9001" name="iaf9001" id="iaf9001">
+                    <datalist id="yesno9001">
+                        <option value="Yes">
+                        <option value="No">
+                        <option value="NA">
+                    </datalist>
+                    </div>
+        </div>   
+    </div>
+
+
+    <div class="row">
+            <div class="col-6">
+                <div class="mb-3">
+                            <label class="form-label" for="iso9001validTo">The ISO9001 Certificate is valid to:</label>
+                            <input class="form-control" type="date" id="iso9001validTo" name="iso9001validTo" value="2024-01-01">
+                </div>   
+            </div>
+
+
+            <div class="col-6">
+                <div class="mb-3">
+                        <label class="form-label" for="iso9001onLine" class="form-label">ISO9001 Certificate number verified online (Y/N)</label>
+                        <input class="form-control" list="yesno2" name="iso9001onLine" id="iso9001onLine">
+                        <datalist id="yesno2">
+                            <option value="Yes, successfull">
+                            <option value="No, not successfull">
+                            <option value="Online check not available">
+                        </datalist>
+                </div>    
+            </div>
+    </div>    
+
+<br>
+
+
+<div class="row">  
+    <div class="col-3">
+            <div class="mb-3">
+                    <label class="form-label" for="iso13485" class="form-label">Manufacturer has a <br><strong>ISO 13485:2016 </strong>certificate (Y/N)</label>
+                    <input class="form-control" list="yesno3" name="iso13485" id="iso13485">
+                    <datalist id="yesno3">
+                        <option value="Yes">
+                        <option value="No">
+                        <option value="NA">
+                    </datalist>
+            </div>
+    </div>   
+
+    <div class="col-4">
+        <div class="mb-3">
+            <label class="form-label" for="body13485">Certifying Body<br>(name, country)</label>
+            <input class="form-control" type="text" id="body13485" name="body13485">
+        </div>  
+</div>  
+    <div class="col-5">
+        <div class="mb-3">
+            <label class="form-label" for="iaf13485" class="form-label">Is the certification body listed <a href="https://www.iafcertsearch.org/search/certification-bodies?standards_id=0255bfb2-ed0b-552d-a27f-eb17be3cab40&standards_name=ISO%2013485" target="_blank">
+             here </a> from one of GHTF founding member countries (EU, USA, Japan, Canada, Australia) (Y/N) </label>
+            <input class="form-control" list="yesno13485"" name="iaf13485" id="iaf13485">
+            <datalist id="yesno13485">
+                <option value="Yes">
+                <option value="No">
+                <option value="NA">
+            </datalist>
+        </div>
+</div>   
+</div>
+</div>  
+    <div class="row">
+        <div class="col-6">
+
+            <div class="mb-3">
+                        <label class="form-label" for="iso13485validTo">The ISO13485 Certificate is valid to:</label>
+                        <input class="form-control" type="date" id="iso13485validTo" name="iso13485validTo" value="2024-01-01">
+            </div>
+        </div>
+            <div class="col-6">
+
+            <div class="mb-3">
+                    <label class="form-label" for="iso13485onLine" class="form-label">ISO13485 Certificate number verified online (Y/N)</label>
+                    <input class="form-control" list="yesno4" name="iso13485onLine" id="iso13485onLine">
+                    <datalist id="yesno4">
+                        <option value="Yes, successfull">
+                        <option value="No, not successfull">
+                        <option value="Online check not available">  
+                        </datalist>
+                </div>
+           
+        </div>
+    </div>
+
+
+<br>  
+<hr style="height:5px; border: 1px dashed rgb(6, 91, 251);background-color:gray">
+<br> 
+
+    <div class="col-12">
+        <div class="mb-3">
+            <label class="form-label" for="DOC" class="form-label">EU <strong>Declaration of Conformity (DOC)</strong> Issued by the Manufacturer ? (Y/N)</label>
+            <input class="form-control" list="yesno5" name="DOC" id="DOC" placeholder="Type to search..."
+                required>
+            <datalist id="yesno5">
+                <option value="Yes">
+                <option value="No">
+                </datalist>
+        </div>
+    </div>
+
+    <div class="row">
+    <div class="col-4">
+        <div class="mb-3">
+            <label class="form-label" for="DOCType" class="form-label">DOC Standard</label>
+            <input class="form-control" list="DOCstandard" name="DOCType" id="DOCType" placeholder="Type to search...">
+            <datalist id="DOCstandard">
+                <option value="(MDR)2017/745">
+                <option value="(MDD)93/42/EEC">
+                <option value="(IVDD)98/79 EC">
+                <option value="(IVDR)2017/746">   
+                </datalist>
+        </div>
+    </div>
+
+    <div class="col-4">
+        <div class="mb-3">
+            <label class="form-label" for="DOCSign" class="form-label">DOC Signed by Manufacturer? (Y/N)</label>
+            <input class="form-control" list="yesno7" name="DOCSign" id="DOCSign" placeholder="Type to search...">
+            <datalist id="yesno7">
+                <option value="Yes">
+                <option value="No">
+                </datalist>
+        </div>
+    </div>
+
+<% if(product.type==="Medical Device" ) {%>
+<div class="col-4">
+    <div class="mb-3">
+        <label class="form-label" for="DOCMdClass" class="form-label">MD Classification (based on DOC)</label>
+        <input class="form-control" list="mdClass" name="DOCMdClass" id="DOCMdClass" placeholder="Type to search...">
+        <datalist id="mdClass">
+            <option value="I">
+                <option value="IIa">
+                    <option value="IIb">
+                    <option value="III">
+                        <option value="IV">
+                            <option value="NA">
+        </datalist>
+    </div>
+</div>
+<% } %>
+
+
+<% if(product.type==="In-vitro Diagnostic Medical Device" ) {%>
+<div class="col-4">
+    <div class="mb-3">
+        <label class="form-label" for="DOCIvdClass" class="form-label">IVD Classification (based on DOC)</label>
+        <input class="form-control" list="ivdClass" name="DOCIvdClass" id="DOCIvdClass" placeholder="Type to search...">
+        <datalist id="ivdClass">
+            <option value="A">
+                <option value="B">
+                    <option value="C">
+                    <option value="D">
+                        <option value="NA">
+            </datalist>
+    </div>
+</div>
+<% } %>
+
+</div>
+
+
+<div class="mb-3 mt-3">
+    <label class="form-label" for="DOCEq">Any Equivalent Declaration from the manufacturer wr to device standards</label>
+    <textarea class="form-control" type="text" id="DOCEq" name="DOCEq"></textarea>
+</div>
+
+
+
+<br>  
+<hr style="height:5px; border: 1px dashed rgb(6, 91, 251);background-color:gray">
+<br>  
+
+<div class="mb-3">
+    <label class="form-label" for="CEcert" class="form-label">Does the device have a <strong>CE Certification</strong></label>
+    <input class="form-control" list="yesno8" name="CEcert" id="CEcert" placeholder="Type to search..."
+        required>
+    <datalist id="yesno8">
+        <option value="Yes">
+        <option value="No">
+        <option value="NA">
+        </datalist>
+</div>
+
+    <div class="mb-3">
+        <div class="row">
+            <div class="col-10">
+        <label class="form-label" for="nBody" class="form-label">Issued by an accredited EU Notified Body listed for <%= product.type%> legislation?
+        </div>
+            <div class="col-2"><a href="https://webgate.ec.europa.eu/single-market-compliance-space/#/notified-bodies" target="_blank">Check on EU NB Database</a></label>
+            </div>
+        </div>
+        <input class="form-control" list="notifiedbody" name="nBody" id="nBody" placeholder="Type to search by NB #..."
+            required>
+        <datalist id="notifiedbody">
+            <option value="NB 0044 - TÜV NORD CERT GmbH - Germany (93/42/EEC MDD)">
+                <option value="NB 0050 - National Standards Authority of Ireland (NSAI) - Ireland (93/42/EEC MDD)">
+                <option value="NB 0051 - IMQ ISTITUTO ITALIANO DEL MARCHIO DI QUALITÀ S.P.A. - Italy (93/42/EEC MDD)">
+                <option value="NB 0068 - MTIC InterCert S.r.l. - Italy (93/42/EEC MDD)">
+                <option value="NB 0123 - TÜV SÜD Product Service GmbH - Germany (93/42/EEC MDD)">
+                <option value="NB 0124 - DEKRA Certification GmbH - Germany (93/42/EEC MDD)">
+                <option value="NB 0197 - TÜV Rheinland LGA Products GmbH - Germany (93/42/EEC MDD)">
+                <option value="NB 0297 - DQS Medizinprodukte GmbH - Germany (93/42/EEC MDD)">
+                <option value="NB 0318 - CENTRO NACIONAL DE CERTIFICACION DE PRODUCTOS SANITARIOS - Spain (93/42/EEC MDD)">
+                <option value="NB 0344 - DEKRA Certification B.V. - Netherlands (93/42/EEC MDD)">
+                <option value="NB 0373 - ISTITUTO SUPERIORE DI SANITA' - Italy (93/42/EEC MDD)">
+                <option value="NB 0402 - RISE Research Institutes of Sweden AB - Sweden (93/42/EEC MDD)">
+                <option value="NB 0413 - INTERTEK SEMKO AB - Sweden (93/42/EEC MDD)">
+                <option value="NB 0425 - ICIM S.P.A. - Italy (93/42/EEC MDD)">
+                <option value="NB 0426 - ITALCERT SRL - Italy (93/42/EEC MDD)">
+                <option value="NB 0459 - GMED SAS - France (93/42/EEC MDD)">
+                <option value="NB 0476 - KIWA CERMET ITALIA S.P.A. - Italy (93/42/EEC MDD)">
+                <option value="NB 0477 - Eurofins Product Testing Italy S.r.l. - Italy (93/42/EEC MDD)">
+                <option value="NB 0482 - DNV MEDCERT GmbH - Germany (93/42/EEC MDD)">
+                <option value="NB 0483 - MDC MEDICAL DEVICE CERTIFICATION GMBH - Germany (93/42/EEC MDD)">
+                <option value="NB 0494 - SLG PRÜF UND ZERTIFIZIERUNGS GMBH - Germany (93/42/EEC MDD)">
+                <option value="NB 0537 - Eurofins Electric & Electronics Finland Oy - Finland (93/42/EEC MDD)">
+                <option value="NB 0546 - CERTIQUALITY S.r.l. - Italy (93/42/EEC MDD)">
+                <option value="NB 0598 ex:403 - SGS FIMKO OY - Finland (93/42/EEC MDD)">
+                <option value="NB 0633 - Berlin Cert Prüf- und Zertifizierstelle für Medizinprodukte GmbH - Germany (93/42/EEC MDD)">
+                <option value="NB 0653 - NATIONAL EVALUATION CENTER OF QUALITY AND TECHNOLOGY IN HEALTH S.A.- EKAPTY - Greece (93/42/EEC MDD)">
+                <option value="NB 0681 - Eurofins Product Service GmbH - Germany (93/42/EEC MDD)">
+                <option value="NB 0805 - THERAPEUTIC GOODS ADMINISTRATION - Australia (MRA) (93/42/EEC MDD)">
+                <option value="NB 1011 - NEOEMKI Nemzeti Orvostechnikai Eszköz Megfelelőségértékelő és Tanúsító Korlátolt Felelősségű Társaság (NEOEMKI LLC) - Hungary (93/42/EEC MDD)">
+                <option value="NB 1014 - ELEKTROTECHNICKÝ ZKUŠEBNÍ ÚSTAV, s.p. - Czech Republic (93/42/EEC MDD)">
+                <option value="NB 1023 - INSTITUT PRO TESTOVÁNI A CERTIFIKACI, a. s. (INSTITUTE FOR TESTING AND CERTIFICATION) merged with ex-NB 1390 - Czech Republic (93/42/EEC MDD)">
+                <option value="NB 1282 - ENTE CERTIFICAZIONE MACCHINE SRL - Italy (93/42/EEC MDD)">
+                <option value="NB 1304 - SLOVENIAN INSTITUTE OF QUALITY AND METROLOGY - SIQ - Slovenia (93/42/EEC MDD)">
+                <option value="NB 1370 - BUREAU VERITAS ITALIA S.P.A. - Italy (93/42/EEC MDD)">
+                <option value="NB 1434 - POLSKIE CENTRUM BADAN I CERTYFIKACJI S.A. - Poland (93/42/EEC MDD)">
+                <option value="NB 1639 - SGS Belgium NV - Belgium (93/42/EEC MDD)">
+                <option value="NB 1783 - TURKISH STANDARDS INSTITUTION (TSE) - Türkiye (93/42/EEC MDD)">
+                <option value="NB 1912 - Kiwa Dare B.V. - Netherlands (93/42/EEC MDD)">
+                <option value="NB 1936 - TUV Rheinland Italia SRL - Italy (93/42/EEC MDD)">
+                <option value="NB 1984 - Kiwa Belgelendirme Hizmetleri A.Ş. - Türkiye (93/42/EEC MDD)">
+                <option value="NB 2195 - Szutest Uygunluk Değerlendirme A.Ş. - Türkiye (93/42/EEC MDD)">
+                <option value="NB 2265 - 3EC International a.s. - Slovakia (93/42/EEC MDD)">
+                <option value="NB 2274 - TUV NORD Polska Sp. z o.o - Poland (93/42/EEC MDD)">
+                <option value="NB 2292 - UDEM Uluslararasi Belgelendirme Denetim Egitim Merkezi San. ve Tic. A.Ş. - Türkiye (93/42/EEC MDD)">
+                <option value="NB 2409 - CE Certiso Orvos- és Kórháztechnikai Ellenőrző és Tanúsító Kft. - Hungary (93/42/EEC MDD)">
+                <option value="NB 2460 - DNV Product Assurance AS - Norway (93/42/EEC MDD)">
+                <option value="NB 2764 - Notice Belgelendirme, Muayene ve Denetim Hizmetleri Anonim Şirketi - Türkiye (93/42/EEC MDD)">
+                <option value="NB 2797 - BSI Group The Netherlands B.V. - Netherlands (93/42/EEC MDD)">
+                <option value="NB 2803 - HTCert (Health Technology Certification Ltd) - Cyprus (93/42/EEC MDD)">
+                <option value="NB 2854 - bqs. s.r.o. - Slovakia (93/42/EEC MDD)">
+                <option value="NB 0805 - THERAPEUTIC GOODS ADMINISTRATION - Australia (MRA) (93/42/EEC MDD)">
+                <option value="NB 0050 - National Standards Authority of Ireland (NSAI) - Ireland (98/79EC IVDD)">
+                <option value="NB 0123 - TÜV SÜD Product Service GmbH - Germany (98/79EC IVDD)">
+                <option value="NB 0197 - TÜV Rheinland LGA Products GmbH - Germany (98/79EC IVDD)">
+                <option value="NB 0318 - CENTRO NACIONAL DE CERTIFICACION DE PRODUCTOS SANITARIOS - Spain (98/79EC IVDD)">
+                <option value="NB 0344 - DEKRA Certification B.V. - Netherlands (98/79EC IVDD)">
+                <option value="NB 0373 - ISTITUTO SUPERIORE DI SANITA' - Italy (98/79EC IVDD)">
+                <option value="NB 0459 - GMED SAS - France (98/79EC IVDD)">
+                <option value="NB 0483 - MDC MEDICAL DEVICE CERTIFICATION GMBH - Germany (98/79EC IVDD)">
+                <option value="NB 0537 - Eurofins Electric & Electronics Finland Oy - Finland (98/79EC IVDD)">
+                <option value="NB 0543 - Presafe Denmark A/S - Denmark (98/79EC IVDD)">
+                <option value="NB 1011 - NEOEMKI Nemzeti Orvostechnikai Eszköz Megfelelőségértékelő és Tanúsító Korlátolt Felelősségű Társaság (NEOEMKI LLC) - Hungary (98/79EC IVDD)">
+                <option value="NB 1023 - INSTITUT PRO TESTOVÁNI A CERTIFIKACI, a. s. (INSTITUTE FOR TESTING AND CERTIFICATION) merged with ex-NB 1390 - Czech Republic (98/79EC IVDD)">
+                <option value="NB 1293 - EVPU a.s. - Slovakia (98/79EC IVDD)">
+                <option value="NB 1434 - POLSKIE CENTRUM BADAN I CERTYFIKACJI S.A. - Poland (98/79EC IVDD)">
+                <option value="NB 2265 - 3EC International a.s. - Slovakia (98/79EC IVDD)">
+                <option value="NB 2409 - CE Certiso Orvos- és Kórháztechnikai Ellenőrző és Tanúsító Kft. - Hungary (98/79EC IVDD)">
+                <option value="NB 2797 - BSI Group The Netherlands B.V. - Netherlands (98/79EC IVDD)">
+                <option value="NB 2854 - bqs. s.r.o. - Slovakia (98/79EC IVDD)">
+                <option value="NB 2934 - CeCert Sp. z o.o. - Poland (98/79EC IVDD)">
+                <option value="NB 0044 - TÜV NORD CERT GmbH - Germany (EU 2017/745 (MDR))">
+                <option value="NB 0050 - National Standards Authority of Ireland (NSAI) - Ireland (EU 2017/745 (MDR))">
+                <option value="NB 0051 - IMQ ISTITUTO ITALIANO DEL MARCHIO DI QUALITÀ S.P.A. - Italy (EU 2017/745 (MDR))">
+                <option value="NB 0123 - TÜV SÜD Product Service GmbH - Germany (EU 2017/745 (MDR))">
+                <option value="NB 0124 - DEKRA Certification GmbH - Germany (EU 2017/745 (MDR))">
+                <option value="NB 0197 - TÜV Rheinland LGA Products GmbH - Germany (EU 2017/745 (MDR))">
+                <option value="NB 0297 - DQS Medizinprodukte GmbH - Germany (EU 2017/745 (MDR))">
+                <option value="NB 0318 - CENTRO NACIONAL DE CERTIFICACION DE PRODUCTOS SANITARIOS - Spain (EU 2017/745 (MDR))">
+                <option value="NB 0344 - DEKRA Certification B.V. - Netherlands (EU 2017/745 (MDR))">
+                <option value="NB 0373 - ISTITUTO SUPERIORE DI SANITA' - Italy (EU 2017/745 (MDR))">
+                <option value="NB 0425 - ICIM S.P.A. - Italy (EU 2017/745 (MDR))">
+                <option value="NB 0426 - ITALCERT SRL - Italy (EU 2017/745 (MDR))">
+                <option value="NB 0459 - GMED SAS - France (EU 2017/745 (MDR))">
+                <option value="NB 0476 - KIWA CERMET ITALIA S.P.A. - Italy (EU 2017/745 (MDR))">
+                <option value="NB 0477 - Eurofins Product Testing Italy S.r.l. - Italy (EU 2017/745 (MDR))">
+                <option value="NB 0482 - DNV MEDCERT GmbH - Germany (EU 2017/745 (MDR))">
+                <option value="NB 0483 - MDC MEDICAL DEVICE CERTIFICATION GMBH - Germany (EU 2017/745 (MDR))">
+                <option value="NB 0494 - SLG PRÜF UND ZERTIFIZIERUNGS GMBH - Germany (EU 2017/745 (MDR))">
+                <option value="NB 0537 - Eurofins Electric & Electronics Finland Oy - Finland (EU 2017/745 (MDR))">
+                <option value="NB 0546 - CERTIQUALITY S.r.l. - Italy (EU 2017/745 (MDR))">
+                <option value="NB 0598 ex:403 - SGS FIMKO OY - Finland (EU 2017/745 (MDR))">
+                <option value="NB 0633 - Berlin Cert Prüf- und Zertifizierstelle für Medizinprodukte GmbH - Germany (EU 2017/745 (MDR))">
+                <option value="NB 1023 - INSTITUT PRO TESTOVÁNI A CERTIFIKACI, a. s. (INSTITUTE FOR TESTING AND CERTIFICATION) merged with ex-NB 1390 - Czech Republic (EU 2017/745 (MDR))">
+                <option value="NB 1282 - ENTE CERTIFICAZIONE MACCHINE SRL - Italy (EU 2017/745 (MDR))">
+                <option value="NB 1304 - SLOVENIAN INSTITUTE OF QUALITY AND METROLOGY - SIQ - Slovenia (EU 2017/745 (MDR))">
+                <option value="NB 1370 - BUREAU VERITAS ITALIA S.P.A. - Italy (EU 2017/745 (MDR))">
+                <option value="NB 1434 - POLSKIE CENTRUM BADAN I CERTYFIKACJI S.A. - Poland (EU 2017/745 (MDR))">
+                <option value="NB 1639 - SGS Belgium NV - Belgium (EU 2017/745 (MDR))">
+                <option value="NB 1912 - Kiwa Dare B.V. - Netherlands (EU 2017/745 (MDR))">
+                <option value="NB 1936 - TUV Rheinland Italia SRL - Italy (EU 2017/745 (MDR))">
+                <option value="NB 2265 - 3EC International a.s. - Slovakia (EU 2017/745 (MDR))">
+                <option value="NB 2274 - TUV NORD Polska Sp. z o.o - Poland (EU 2017/745 (MDR))">
+                <option value="NB 2292 - UDEM Uluslararasi Belgelendirme Denetim Egitim Merkezi San. ve Tic. A.Ş. - Türkiye (EU 2017/745 (MDR))">
+                <option value="NB 2409 - CE Certiso Orvos- és Kórháztechnikai Ellenőrző és Tanúsító Kft. - Hungary (EU 2017/745 (MDR))">
+                <option value="NB 2460 - DNV Product Assurance AS - Norway (EU 2017/745 (MDR))">
+                <option value="NB 2696 - UDEM Adriatic d.o.o. - Croatia (EU 2017/745 (MDR))">
+                <option value="NB 2764 - Notice Belgelendirme, Muayene ve Denetim Hizmetleri Anonim Şirketi - Türkiye (EU 2017/745 (MDR))">
+                <option value="NB 2797 - BSI Group The Netherlands B.V. - Netherlands (EU 2017/745 (MDR))">
+                <option value="NB 2803 - HTCert (Health Technology Certification Ltd) - Cyprus (EU 2017/745 (MDR))">
+                <option value="NB 2862 - Intertek Medical Notified Body AB - Sweden (EU 2017/745 (MDR))">
+                <option value="NB 2975 - SZUTEST Konformitätsbewertungsstelle GmbH - Germany (EU 2017/745 (MDR))">
+                <option value="NB 3022 - Scarlet NB B.V. - Netherlands (EU 2017/745 (MDR))">
+                <option value="NB 0050 - National Standards Authority of Ireland (NSAI) - Ireland (EU 2017/745 (IVDR))">
+                <option value="NB 0123 - TÜV SÜD Product Service GmbH - Germany (EU 2017/745 (IVDR))">
+                <option value="NB 0124 - DEKRA Certification GmbH - Germany (EU 2017/745 (IVDR))">
+                <option value="NB 0197 - TÜV Rheinland LGA Products GmbH - Germany (EU 2017/745 (IVDR))">
+                <option value="NB 0344 - DEKRA Certification B.V. - Netherlands (EU 2017/745 (IVDR))">
+                <option value="NB 0459 - GMED SAS - France (EU 2017/745 (IVDR))">
+                <option value="NB 0483 - MDC MEDICAL DEVICE CERTIFICATION GMBH - Germany (EU 2017/745 (IVDR))">
+                <option value="NB 0537 - Eurofins Electric & Electronics Finland Oy - Finland (EU 2017/745 (IVDR))">
+                <option value="NB 2265 - 3EC International a.s. - Slovakia (EU 2017/745 (IVDR))">
+                <option value="NB 2797 - BSI Group The Netherlands B.V. - Netherlands (EU 2017/745 (IVDR))">
+                <option value="NB 2962 - QMD Services GmbH - Austria (EU 2017/745 (IVDR))">
+                <option value="NB 3018 - Sertio Oy - Finland (EU 2017/745 (IVDR))">
+                <option value="Other">
+            </datalist>
+        </div>
+    
+    <div class="row">
+    <div class="col-6">
+    <div class="mb-3">
+        <label class="form-label" for="CEvalidTo">The CE Certificate is valid to:</label>
+        <input class="form-control" type="date" id="CEvalidTo" name="CEvalidTo" value="2024-01-01">
+    </div></div>
+    
+    <div class="col-6">
+    <div class="mb-3">
+        <label class="form-label" for="CEonLine" class="form-label">CE Certificate is verified online (Y/N)</label>
+        <input class="form-control" list="yesno9" name="CEonLine" id="CEonLine" placeholder="Type to search...">
+        <datalist id="yesno9">
+            <option value="Yes, successfull">
+                <option value="No, not successfull">
+                <option value="Online check not available">  
+            </datalist>
+    </div></div>
+    </div>
+
+<div class="mb-3">
+    <label class="form-label" for="CEcertEq">Any Equivalent Certification in one or more GHTF Markets outside the EU</label>
+    <textarea class="form-control" type="text" id="CEcertEq" name="CEcertEq"></textarea>
+</div>
+
+<br>  
+<hr style="height:5px; border: 1px dashed rgb(6, 91, 251);background-color:gray">
+<br>  
+
+
+
+<div class="mb-3">
+    <label class="form-label" for="imageLabel" class="form-label">Image(s) of label/tag provided (Y/N)</label>
+    <input class="form-control" list="yesno6" name="imageLabel" id="imageLabel" placeholder="Type to search..."
+        required>
+    <datalist id="yesno6">
+        <option value="Yes">
+        <option value="No">
+        </datalist>
+</div>
+
+<br>  
+<hr style="height:5px; border: 1px dashed rgb(6, 91, 251);background-color:gray">
+<br>  
+
+<div class="mb-3">
+    <label>Upload Documentation</label>
+  <div class="form-file custom-file">
+      <input type="file" class="form-file-input" id="image" name="image" multiple>
+      <label class="form-file-label" for="image">
+          <span class="form-file-text custom-file-label">Select files ('jpeg', 'png', 'jpg')...</span>
+          <span class="form-file-button">Browse</span>
+      </label>
+  </div>
+</div>
+
+<br>  
+<hr style="height:5px; border: 1px dashed rgb(6, 91, 251);background-color:gray">
+<br>  
+
+<div class="mb-3">
+    <label class="form-label" for="otherDoc">Other Documentation provided</label>
+    <input class="form-control" type="text" id="otherDoc" name="otherDoc">
+    <p>(IFU, Brochure, Manuals, MSDS etc.)</p>
+</div>
+
+
+<br>  
+<hr style="height:5px; border: 1px dashed rgb(6, 91, 251);background-color:gray">
+<br>  
+
+
+
+
+<button class="btn btn-primary">Add Source</button>
+
+<div class="mb-5"></div>
+
+</form>
+
+
+
+ 
+       
+       
+       
+       
+         
+
+       
+

@@ -1,0 +1,99 @@
+<% layout('layouts/boilerplate')%>
+
+<div class="container mt-3">
+    <h1>Status Change</h1>
+       
+        <br>
+        <h3>
+            Product: <%=expression.product.name%> - <%=expression.product.cat%>
+                <br>Source: <%=expression.supplier%> - <%=expression.manufacturer%>
+        </h3>
+
+    <div class="row">
+        <div class="col-md-9">
+            <div class="card shadow">
+                <div class="card-body">
+
+                    <form action="/expressions/<%=expression._id%>?_method=PUT" method="POST" novalidate class = "validated-form" enctype="multipart/form-data">
+
+                        <br>
+                
+         
+                 
+                                <div class="mb-3">
+                                    <label class="form-label" for="status" class="form-label">Update EOI Status from 
+                                    
+                                        <% if(expression.status==="Initiated" ) {%>
+                                            <span style="color:rgb(48, 8, 249)">
+                                                <%=expression.status %>
+                                            </span>
+                                            <% } %>
+                                        
+                                            <% if(expression.status==="Compliant" ) {%>
+                                                <span style="color:rgb(3, 99, 10)">
+                                                    <%=expression.status %>
+                                                </span>
+                                                <% } %>
+            
+                                                    <% if(expression.status==="NonCompliant" ) {%>
+                                                        <span style="color:rgb(240, 6, 6)">
+                                                            <%=expression.status %>
+                                                        </span>
+                                                        <% } %>
+            
+                                                        <% if(expression.status==="Conditional" ) {%>
+                                                            <span style="color:rgb(238, 222, 5)">
+                                                                <%=expression.status %>
+                                                            </span>
+                                                            <% } %>
+            
+                                                            <% if(expression.status==="Cancelled" ) {%>
+                                                                <span style="color:rgb(13, 13, 13)">
+                                                                    <%=expression.status %>
+                                                                </span>
+                                                                <% } %>
+            
+                                                                    <% if(expression.status==="Suspended/Onhold" ) {%>
+                                                                        <span style="color:rgb(250, 92, 7)">
+                                                                            <%=expression.status %>
+                                                                        </span>
+                                                                        <% } %>
+                                                                            to:
+                                    </label>
+                                    <input class="form-control" list="changestatus" name="expression[status]" id="status" required>
+                                    <datalist id="changestatus">
+                                        <option value="Compliant">
+                                            <option value="NonCompliant">
+                                                <option value="Conditional">
+                                                    <option value="Cancelled">
+                                                        <option value="Suspended/Onhold">
+                                    </datalist>
+                            </div>
+
+                                <br>
+
+                        <div class="mb-3 mt-3">
+                            <label class="form-label" for="condition">Enter conditions, if any</label>
+                            <textarea class="form-control" type="text" id="condition" name="expression[condition]" value="<%=expression.condition%>"></textarea>
+                        </div>
+
+                        <br>
+                        <br>
+
+                        <div>
+                        <button class=" btn btn-warning btn-sm">Confirm Status Change</button>
+                        </div>
+                    </form>
+
+
+                </div>   
+            </div>
+        
+        
+            <div>
+                <br>
+                <a class="btn btn-primary btn-sm" href="/expressions/<%=expression._id%>" role="button">Go Back</a></div>
+        </div>
+    </div>
+</div>
+  

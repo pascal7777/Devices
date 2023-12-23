@@ -1,0 +1,91 @@
+<% layout('layouts/boilerplate')%>
+
+<div class="row"></div>
+    <h1 class="text-center">Edit Device details</h1>
+    <div class="col-6 offset-3">
+
+    <form action="/products/<%=product._id%>?_method=PUT" method="POST" novalidate class = "validated-form">
+       
+       
+
+        <div class="mb-3">
+            <label class="form-label" for="type" class="form-label">Device type</label>
+            <input class="form-control" list="device_type" name="product[type]" id="type" value="<%=product.type%>">
+            <datalist id="device_type">
+                <option value="MD">
+                    <option value="IVD">
+                        <option value="PPE">
+                            <option value="Other">  
+                </datalist>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="name">Name</label>
+            <input class="form-control" type="text" id="name" name="product[name]" value="<%=product.name%>">
+        </div>
+
+
+        <div class="row">
+            <div class="col-6">
+            <label class="form-label" for="cat" class="form-label">Category</label>
+            <input class="form-control" list="device_cat"name="product[cat]" id="cat" value="<%=product.cat%>">
+            <datalist id="device_cat">
+            <option value="MD - Diagnostic Equipment">
+                <option value="MD - Monitoring Devices">
+                    <option value="MD - Therapeutic Devices">
+                        <option value="MD - Surgical Instruments">
+                            <option value="MD - Imaging Devices">
+                                <option value="MD - Assistive Devices">
+                                    <option value="MD - Dental Equipment">
+                                        <option value="MD - Wearable Medical Devices">
+                                            <option value="MD - Implantable Devices">
+                                                <option value="MD - Other">
+                                                    <option value="IVD - Clinical Chemistry Analyzers">
+                                                        <option value="IVD - Immunoassay Analyzers">
+                                                            <option value="IVD - Molecular Diagnostic Tests (PCRs)">
+                                                                <option value="IVD - Hematology Analyzers">
+                                                                    <option value="IVD - Coagulation Analyzers">
+                                                                        <option value="IVD - Microbiology Culture Systems">
+                                                                            <option value="IVD - POCT Test kits/rapid tests">
+                                                                                <option value="IVD - Urinalysis Analyzers">
+                                                                                    <option value="IVD - Electrolyte Analyzers">
+                                                                                        <option value="IVD - Blood Gas Analyzers">
+                                                                                            <option value="IVD - Other">                                                                                       
+                                                                                                <option value="Other - Hospital Equipment">    
+                                                                                                    <option value="Other - Laboratory Equipment">   
+                                                                                                        <option value="PPE - Gloves">
+                                                                                                            <option value="PPE - Masks Respirators">
+                                                                                                                <option value="PPE - Faceshields & Goggles">
+                                                                                                                    <option value="PPE - Coveralls">
+                                                                                                                        <option value="PPE - Gowns">
+                                                                                                                            <option value="PPE - Eye Protection">
+                                                                                                                                <option value="PPE - Head & Foot Covers">
+                                                                                                                                    <option value="PPE - Aprons">
+                                                                                                                                        <option value="PPE - Powered Air-Purifying Respirators (PAPRs)">
+                                                                                                                                            <option value="PPE - Other">   
+                                                                                                                                                <option value="Other - Other">
+            </datalist>
+            </div> 
+        </div>
+
+        <div class="mb-3 mt-3">
+            <label class="form-label" for="description">Description</label>
+            <textarea class="form-control"  type="text" id="description" name="product[description]"><%=product.description%></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="intended_use">Intended Use</label>
+            <textarea class="form-control"  type="text" id="intended_use" name="product[intended_use]"><%=product.intended_use%></textarea>
+        </div>
+    
+
+        <div class="mb-3">
+            <label class="form-label" for="demand">Demand</label>
+            <input class="form-control" type="number" id="demand" name="product[demand]" value = "<%=product.demand%>">
+        </div>
+
+
+
+        <button class="btn btn-warning">Update Product</button>
+    </form>
+  
