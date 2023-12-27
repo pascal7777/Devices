@@ -63,5 +63,5 @@ body {
 
 .button:hover{
     
-        color: rgb(247, 245, 242);
+        color: rgba(247,245,242,0.6);
     }
