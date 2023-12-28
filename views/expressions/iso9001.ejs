@@ -13,34 +13,23 @@
    
          <form action="/expressions/<%=expression._id%>?_method=PUT" method="POST" novalidate class = "validated-form" enctype="multipart/form-data">
 
-    <div class="row">
-            <div class="col-3">
-                <div class="card shadow">
-                <div class="card-body">
-                        <div>
-                            <label class="form-label" for="number9001">Certificate Nr. <br>(<span style="color:rgb(8, 96, 249)"><%=expression.number9001%></span>)</label>
+            <div class="mb-3">
+                       
+                            <label class="form-label" for="number9001">Certificate Nr. <br>[<span style="color:rgb(8, 96, 249)"><%=expression.number9001%></span>]</label>
                             <input class="form-control" type="text" name="expression[number9001]" id="number9001">
-                        </div>
+            
                         <p style="margin-top: 0; color: rgb(0, 34, 255);font-size: 0.8em;"><em>optional</em></p>
-                </div>
-                </div>   
-            </div> 
-            <div class="col-3">
-                <div class="card shadow">
-                <div class="card-body">
-                        <div>
-                            <label class="form-label" for="body9001">Certifying Body<br>(<span style="color:rgb(8, 96, 249)"><%=expression.body9001%></span>)</label>
+            </div>
+           
+            <div class="mb-3">
+                            <label class="form-label" for="body9001">Certifying Body<br>[<span style="color:rgb(8, 96, 249)"><%=expression.body9001%></span>]</label>
                             <input class="form-control" type="text" name="expression[body9001]" id="body9001">
-                        </div>
+            
                         <p style="margin-top: 0; color: rgb(0, 34, 255);font-size: 0.8em;"><em>optional</em></p>
-                </div>
-                </div>   
-            </div>   
-            <div class="col-6">
-                <div class="card shadow">
-                <div class="card-body">    
-                        <div>
-                            <label class="form-label" for="iaf9001" class="form-label">Certifiying Body GHTF <br>(<span style="color:rgb(8, 96, 249)"><%=expression.iaf9001%></span>)</label>
+            </div> 
+          
+            <div class="mb-3">
+                            <label class="form-label" for="iaf9001" class="form-label">Certifiying Body GHTF <br>[<span style="color:rgb(8, 96, 249)"><%=expression.iaf9001%></span>]</label>
                             <input class="form-control" list="yesno9001" name="expression[iaf9001]" id="iaf9001">
                             <datalist id="yesno9001">
                                     <option value="Yes">
@@ -48,32 +37,18 @@
                                     <option value="NA">
                             </datalist>
                             <p style="margin-top: 0; color: rgb(0, 34, 255);font-size: 0.8em;"><em>optional</em></p>
-                        </div>
-                </div>   
-                </div> 
-            </div> 
-    </div>      
-
-    <br>
-
-    <div class="row">
-            <div class="col-6">
-                <div class="card shadow">
-                <div class="card-body"> 
-                    <div>
-                        <label class="form-label" for="iso9001validTo">'Valid to' date <br>(<span style="color:rgb(8, 96, 249)"><%=expression.iso9001validTo.toDateString()%> </span>)</label>
-                        <input class="form-control" type="date" name="expression[iso9001validTo]" id="iso9001validTo" required>
-                    </div>
-                        <p style="margin-top: 0; color: red;font-size: 0.8em;"><em>required</em></p>
-                </div>
-                </div>   
             </div>
-                            
-            <div class="col-6">
-                <div class="card shadow">
-                <div class="card-body"> 
-                    <div>
-                        <label class="form-label" for="iso9001onLine" class="form-label">Verified online <br>(<span style="color:rgb(8, 96, 249)"><%=expression.iso9001onLine%></span>)</label>
+           
+
+
+            <div class="mb-3">
+                        <label class="form-label" for="iso9001validTo">'Valid to' date <br>[<span style="color:rgb(8, 96, 249)"><%=expression.iso9001validTo.toDateString()%> </span>]</label>
+                        <input class="form-control" type="date" name="expression[iso9001validTo]" id="iso9001validTo" required>
+                        <p style="margin-top: 0; color: red;font-size: 0.8em;"><em>required</em></p>
+            </div>
+               
+            <div class="mb-3">
+                        <label class="form-label" for="iso9001onLine" class="form-label">Verified online <br>[<span style="color:rgb(8, 96, 249)"><%=expression.iso9001onLine%></span>]</label>
                         <input class="form-control" list="yesno2" name="expression[iso9001onLine]" id="iso9001onLine">
                         <datalist id="yesno2">
                             <option value="Yes, successfull">
@@ -82,11 +57,8 @@
                             <option value="Not verified (yet)">
                         </datalist>
                         <p style="margin-top: 0; color: rgb(0, 34, 255);font-size: 0.8em;"><em>optional</em></p>
-                    </div> 
-                </div>
-                </div>   
-            </div>
-    </div>  
+            </div> 
+       
 
 
     <br> <br>

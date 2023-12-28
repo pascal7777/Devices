@@ -80,10 +80,10 @@
                     <p class="mt-3"><a class="btn btn-warning btn-sm" style="padding-left: 15px; padding-right: 15px ;" href="/expressions/<%=expression._id%>/status" role="button">Change Status</a></p>         
                     <% } %>
                 </h5> 
-                <% if(expression.condition ==="" ) {%>
-                    <h5></h5>
-                    <% } else{ %>
+                <% if(expression.condition !== "") {%>
                     <h5 style="font-size: 1em">Note: <%=expression.condition %> </h5>
+                    <% } else{ %>
+                   
                 <% } %>
         </div>
         </div>
@@ -111,13 +111,21 @@
                             </ul>
                 <h5 style="font-size: 1em">Device Model/Brand</h5>
                             <ul>
-                            <li>
-                            Model: <%= expression.deviceModel%>
-                            </li>
-                            <li>Catalogue nr: <%= expression.catnr%> 
-                            </li>
-                            <li>Brand Name: <%= expression.brandName%> 
-                            </li>
+                          
+                                <% if(expression.deviceModel!=="" ) {%>
+                                    <li> Model: <%= expression.deviceModel%></li>
+                                    <% } %>
+                            
+                          
+                                <% if( expression.catnr!=="" ) {%>
+                                    <li> Catalogue nr: <%= expression.catnr%>   </li>
+                                <% } %>
+                          
+                           
+                                <% if( expression.brandName!=="" ) {%>
+                                    <li> Brand Name: <%= expression.brandName%>    </li>
+                                    <% } %>
+                         
                             </ul>
                 <h5 style="font-size: 1em">QMS ISO Certification</h5>
                             <ul>
@@ -185,35 +193,36 @@
                                     <% if(expression.DOC==="Yes" ) {%>
                                     <ul>
                                     <li>Type: <%=expression.DOCType%></li>    
-                                    <li>Signed by Manufacturer?:    <%= expression.DOCSign%> </li>   <li>Device Classification: Class <%=expression.DOCMdClass%>  <%=expression.DOCIvdClass%> </li>
+                                    <li>Device Classification: Class <%=expression.DOCMdClass%>  <%=expression.DOCIvdClass%> </li>
                                     <% } %>
-                                    <li>Other: <%=expression.DOCEq%></li> </li>
                                     </ul>         
                             </ul>
                 <h5 style="font-size: 1em">GHTF Market Clearance</h5> 
                             <ul>
-                                    <li><strong>CE certification</strong>:    <a href="/expressions/<%=expression._id%>/ce"><%=expression.CEcert %>  </a>  </li>
+                                <li><strong>CE certification</strong>:    <a href="/expressions/<%=expression._id%>/ce"><%=expression.CEcert %>  </a>  
+                                </li>
+                                    
+                                <div class="row">
+                                <div class="col-sm-12">
                                     <% if(expression.CEcert ==="Yes" ) {%>
-                                    <div class="row">
-                                    <div class="col-sm-12">
-                                        <ul>
-                                        <li>Valid to: <%=expression.CEvalidTo.toDateString()%>
-                                        </li>
-                                        <%  if( expression.CEvalidTo < Date.now())  {%>
-                                            <h3 style="font-size: 1em"><em>  <span style="color:rgb(157, 6, 6)">expired <%= moment(expression.CEvalidTo).fromNow() %></span></em></h3>  
+                                    <ul>
+                                    <li>Valid to: <%=expression.CEvalidTo.toDateString()%>
+                                    </li>
+                                    <%  if( expression.CEvalidTo < Date.now())  {%>
+                                    <h3 style="font-size: 1em"><em>  <span style="color:rgb(157, 6, 6)">expired <%= moment(expression.CEvalidTo).fromNow() %></span></em></h3>  
                                         
-                                            <% } else if (expression.CEvalidTo < Date.now()+1000*60*60*24*30) { %>
-                                            <h3 style="font-size: 1em"><em>  <span style="color:rgb(233, 153, 5)">expires <%= moment(expression.CEvalidTo).fromNow() %></span></em></h3>  
+                                    <% } else if (expression.CEvalidTo < Date.now()+1000*60*60*24*30) { %>
+                                    <h3 style="font-size: 1em"><em>  <span style="color:rgb(233, 153, 5)">expires <%= moment(expression.CEvalidTo).fromNow() %></span></em></h3>  
                                             
-                                            <% } else{ %>
-                                                <h3 style="font-size: 1em"><em>(<%= moment(expression.CEvalidTo).fromNow() %>)</em></h3>  
-                                            <% } %>
-                                        </ul>
-                                    </div>
-                                        <% } %>
-                                    </div>
+                                    <% } else{ %>
+                                    <h3 style="font-size: 1em"><em>(<%= moment(expression.CEvalidTo).fromNow() %>)</em></h3>  
+                                    <% } %>
+                                </ul>
+                                </div>
+                                    <% } %>
+                                </div>
                             </ul>
-                <h5 style="font-size: 1em">Supporting Documents</h5> 
+                <!-- <h5 style="font-size: 1em">Supporting Documents</h5> 
                             <ul>
                                     <li> 
                                     Image(s) of label/tag or primary packaging:     <%=expression.imageLabel%> 
@@ -221,10 +230,10 @@
                                     <li>
                                     Other Documentation:     <%=expression.otherDoc%> 
                                     </li>
-                            </ul>
+                            </ul> -->
         </div>
         </div>
-    
+    </div>
 
     <div class="col-sm-6">
         <div class="card">

@@ -87,10 +87,10 @@
                 <br>
 
     <div class="row">  
-        <div class="col-3">
+        <div class="col-6">
             <div class="mb-3">
-                    <label class="form-label" for="iso9001" class="form-label">Manufacturer has a <br><strong>ISO 9001:2015 </strong>certificate (Y/N)</label>
-                    <input class="form-control" list="yesno1" name="iso9001" id="iso9001">
+                    <label class="form-label" for="iso9001" class="form-label">Manufacturer has a <strong>ISO 9001:2015 </strong>certificate (Y/N)</label>
+                    <input class="form-control" list="yesno1" name="iso9001" id="iso9001" required>
                     <datalist id="yesno1">
                         <option value="Yes">
                         <option value="No">
@@ -99,7 +99,7 @@
             </div>
         </div>
 
-        <div class="col-4">
+        <!-- <div class="col-4">
                     <div class="mb-3">
                         <label class="form-label" for="body9001">Certifying Body<br>(name, country)</label>
                         <input class="form-control" type="text" id="body9001" name="body9001">
@@ -118,19 +118,18 @@
                     </datalist>
                     </div>
         </div>   
-    </div>
+    </div> -->
 
 
-    <div class="row">
-            <div class="col-6">
-                <div class="mb-3">
+
+        <div class="col-6">
+            <div class="mb-3">
                             <label class="form-label" for="iso9001validTo">The ISO9001 Certificate is valid to:</label>
-                            <input class="form-control" type="date" id="iso9001validTo" name="iso9001validTo" value="2024-01-01">
-                </div>   
-            </div>
+                            <input class="form-control" type="date" id="iso9001validTo" name="iso9001validTo" value="2024-01-01" required>
+            </div>   
+        </div> 
 
-
-            <div class="col-6">
+            <!-- <div class="col-6">
                 <div class="mb-3">
                         <label class="form-label" for="iso9001onLine" class="form-label">ISO9001 Certificate number verified online (Y/N)</label>
                         <input class="form-control" list="yesno2" name="iso9001onLine" id="iso9001onLine">
@@ -140,54 +139,53 @@
                             <option value="Online check not available">
                         </datalist>
                 </div>    
-            </div>
-    </div>    
-
+            </div> -->
+       
+    </div> 
 <br>
 
 
 <div class="row">  
-    <div class="col-3">
+    <div class="col-6">
             <div class="mb-3">
-                    <label class="form-label" for="iso13485" class="form-label">Manufacturer has a <br><strong>ISO 13485:2016 </strong>certificate (Y/N)</label>
-                    <input class="form-control" list="yesno3" name="iso13485" id="iso13485">
+                    <label class="form-label" for="iso13485" class="form-label">Manufacturer has a <strong>ISO 13485:2016 </strong>certificate (Y/N)</label>
+                    <input class="form-control" list="yesno3" name="iso13485" id="iso13485" required>
                     <datalist id="yesno3">
                         <option value="Yes">
                         <option value="No">
                         <option value="NA">
                     </datalist>
             </div>
-    </div>   
-
+    </div>
+<!-- 
     <div class="col-4">
         <div class="mb-3">
             <label class="form-label" for="body13485">Certifying Body<br>(name, country)</label>
             <input class="form-control" type="text" id="body13485" name="body13485">
         </div>  
-</div>  
-    <div class="col-5">
-        <div class="mb-3">
-            <label class="form-label" for="iaf13485" class="form-label">Is the certification body listed <a href="https://www.iafcertsearch.org/search/certification-bodies?standards_id=0255bfb2-ed0b-552d-a27f-eb17be3cab40&standards_name=ISO%2013485" target="_blank">
-             here </a> from one of GHTF founding member countries (EU, USA, Japan, Canada, Australia) (Y/N) </label>
-            <input class="form-control" list="yesno13485"" name="iaf13485" id="iaf13485">
-            <datalist id="yesno13485">
-                <option value="Yes">
-                <option value="No">
-                <option value="NA">
-            </datalist>
-        </div>
-</div>   
-</div>
-</div>  
-    <div class="row">
-        <div class="col-6">
-
+    </div>  
+        <div class="col-5">
             <div class="mb-3">
-                        <label class="form-label" for="iso13485validTo">The ISO13485 Certificate is valid to:</label>
-                        <input class="form-control" type="date" id="iso13485validTo" name="iso13485validTo" value="2024-01-01">
+                <label class="form-label" for="iaf13485" class="form-label">Is the certification body listed <a href="https://www.iafcertsearch.org/search/certification-bodies?standards_id=0255bfb2-ed0b-552d-a27f-eb17be3cab40&standards_name=ISO%2013485" target="_blank">
+                here </a> from one of GHTF founding member countries (EU, USA, Japan, Canada, Australia) (Y/N) </label>
+                <input class="form-control" list="yesno13485"" name="iaf13485" id="iaf13485">
+                <datalist id="yesno13485">
+                    <option value="Yes">
+                    <option value="No">
+                    <option value="NA">
+                </datalist>
             </div>
+    </div>   
+    </div> -->
+
+   
+        <div class="col-6">
+                <div class="mb-3">
+                        <label class="form-label" for="iso13485validTo">The ISO13485 Certificate is valid to:</label>
+                        <input class="form-control" type="date" id="iso13485validTo" name="iso13485validTo" value="2024-01-01" required>
+                </div>
         </div>
-            <div class="col-6">
+            <!-- <div class="col-6">
 
             <div class="mb-3">
                     <label class="form-label" for="iso13485onLine" class="form-label">ISO13485 Certificate number verified online (Y/N)</label>
@@ -199,8 +197,8 @@
                         </datalist>
                 </div>
            
-        </div>
-    </div>
+        </div> -->
+</div>
 
 
 <br>  
@@ -210,8 +208,7 @@
     <div class="col-12">
         <div class="mb-3">
             <label class="form-label" for="DOC" class="form-label">EU <strong>Declaration of Conformity (DOC)</strong> Issued by the Manufacturer ? (Y/N)</label>
-            <input class="form-control" list="yesno5" name="DOC" id="DOC" placeholder="Type to search..."
-                required>
+            <input class="form-control" list="yesno5" name="DOC" id="DOC" placeholder="Type to search..." required>
             <datalist id="yesno5">
                 <option value="Yes">
                 <option value="No">
@@ -233,7 +230,7 @@
                 </div>
         </div>
 
-        <div class="col-4">
+        <!-- <div class="col-4">
             <div class="mb-3">
                 <label class="form-label" for="DOCSign" class="form-label">DOC Signed by Manufacturer? (Y/N)</label>
                 <input class="form-control" list="yesno7" name="DOCSign" id="DOCSign" placeholder="Type to search...">
@@ -242,7 +239,7 @@
                     <option value="No">
                     </datalist>
             </div>
-        </div>
+        </div> -->
 
         <% if(product.type==="MD" ) {%>
         <div class="col-4">
@@ -281,10 +278,10 @@
 </div>
 
 
-<div class="mb-3 mt-3">
+<!-- <div class="mb-3 mt-3">
     <label class="form-label" for="DOCEq">Any Equivalent Declaration from the manufacturer wr to device standards</label>
     <textarea class="form-control" type="text" id="DOCEq" name="DOCEq"></textarea>
-</div>
+</div> -->
 
 
 
@@ -292,18 +289,20 @@
 <hr style="height:5px; border: 1px dashed rgb(6, 91, 251);background-color:gray">
 <br>  
 
-<div class="mb-3">
-    <label class="form-label" for="CEcert" class="form-label">Does the device have a <strong>CE Certification</strong></label>
-    <input class="form-control" list="yesno8" name="CEcert" id="CEcert" placeholder="Type to search..."
-        required>
-    <datalist id="yesno8">
-        <option value="Yes">
-        <option value="No">
-        <option value="NA">
-        </datalist>
-</div>
-
+<div class="row"> 
+    <div class="col-6">
     <div class="mb-3">
+        <label class="form-label" for="CEcert" class="form-label">Does the device have a <strong>CE Certification</strong></label>
+        <input class="form-control" list="yesno8" name="CEcert" id="CEcert" placeholder="Type to search..." required>
+        <datalist id="yesno8">
+            <option value="Yes">
+            <option value="No">
+            <option value="NA">
+            </datalist>
+    </div>
+    </div>   
+<!-- 
+<div class="mb-3">
         <div class="row">
             <div class="col-10">
         <label class="form-label" for="nBody" class="form-label">Issued by an accredited EU Notified Body listed for <%= product.type%> legislation?
@@ -438,16 +437,19 @@
                 <option value="NB 2962 - QMD Services GmbH - Austria (EU 2017/745 (IVDR))">
                 <option value="NB 3018 - Sertio Oy - Finland (EU 2017/745 (IVDR))">
                 <option value="Other">
-            </datalist>
-        </div>
+        </datalist>
+</div> -->
     
-    <div class="row">
+ 
     <div class="col-6">
     <div class="mb-3">
         <label class="form-label" for="CEvalidTo">The CE Certificate is valid to:</label>
         <input class="form-control" type="date" id="CEvalidTo" name="CEvalidTo" value="2024-01-01">
-    </div></div>
-    
+    </div>
+    </div>
+
+</div>
+<!--     
     <div class="col-6">
     <div class="mb-3">
         <label class="form-label" for="CEonLine" class="form-label">CE Certificate is verified online (Y/N)</label>
@@ -457,13 +459,14 @@
             <option value="No, not successfull">
             <option value="Online check not available">  
             </datalist>
-    </div></div>
     </div>
+    </div> -->
 
-<div class="mb-3">
+
+<!-- <div class="mb-3">
     <label class="form-label" for="CEcertEq">Any Equivalent Certification in one or more GHTF Markets outside the EU</label>
     <textarea class="form-control" type="text" id="CEcertEq" name="CEcertEq"></textarea>
-</div>
+</div> -->
 
 <br>  
 <hr style="height:5px; border: 1px dashed rgb(6, 91, 251);background-color:gray">
@@ -471,7 +474,7 @@
 
 
 
-<div class="mb-3">
+<!-- <div class="mb-3">
     <label class="form-label" for="imageLabel" class="form-label">Image(s) of label/tag provided (Y/N)</label>
     <input class="form-control" list="yesno6" name="imageLabel" id="imageLabel" placeholder="Type to search..."
         required>
@@ -479,11 +482,11 @@
         <option value="Yes">
         <option value="No">
         </datalist>
-</div>
+</div> -->
 
-<br>  
+<!-- <br>  
 <hr style="height:5px; border: 1px dashed rgb(6, 91, 251);background-color:gray">
-<br>  
+<br>   -->
 
 <div class="mb-3">
     <label>Upload Documentation</label>
@@ -496,15 +499,15 @@
   </div>
 </div>
 
-<br>  
+<!-- <br>  
 <hr style="height:5px; border: 1px dashed rgb(6, 91, 251);background-color:gray">
-<br>  
+<br>   -->
 
-<div class="mb-3">
+<!-- <div class="mb-3">
     <label class="form-label" for="otherDoc">Other Documentation provided</label>
     <input class="form-control" type="text" id="otherDoc" name="otherDoc">
     <p>(IFU, Brochure, Manuals, MSDS etc.)</p>
-</div>
+</div> -->
 
 
 <br>  
