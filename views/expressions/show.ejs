@@ -129,15 +129,15 @@
                             </ul>
                 <h5 style="font-size: 1em">QMS ISO Certification</h5>
                             <ul>
-                                <li>
-                                <div class="row">                   
-                                    <div class="col-sm-12">
-                                        <strong>ISO 9001:2015</strong>:
+                                <li><strong>ISO 9001:2015</strong>:
+                                    <% if(expression.iso9001 ==="Yes" ) {%>   
                                         <a href="/expressions/<%=expression._id%>/iso9001"><%=expression.iso9001 %></a>
-                                    </div>
-                                </div>
-                                        </li>
+                                        <% } else{ %>
+                                            <%=expression.iso9001%>
+                                            <% } %>
+                                </li>
                                         <% if(expression.iso9001 ==="Yes" ) {%>
+                                
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <ul>
@@ -156,14 +156,13 @@
                                     </div>
                                         <% } %>
                                 </div>
-                                <li>
-                                <div class="row">                   
-                                    <div class="col-sm-12">
-                                        <strong>ISO 13485:2016</strong>:
-                                        <a href="/expressions/<%=expression._id%>/iso13485"><%=expression.iso13485%></a>
-                                    </div>
-                                </div>
-                                </li>   
+                                <li><strong>ISO 13485:2016</strong>:
+                                    <% if(expression.iso13485 ==="Yes" ) {%>   
+                                        <a href="/expressions/<%=expression._id%>/iso13485"><%=expression.iso13485 %></a>
+                                        <% } else{ %>
+                                            <%=expression.iso13485%>
+                                            <% } %>
+                                </li>  
                                     <% if(expression.iso13485 ==="Yes" ) {%>
                                 
                                 <div class="row">
@@ -188,8 +187,6 @@
                 <h5 style="font-size: 1em"><strong>EU Declaration Conformity</strong></h5>
                             <ul>
                                     <li>EU DOC:    <%=expression.DOC%>       </li> 
-                                    
-
                                     <% if(expression.DOC==="Yes" ) {%>
                                     <ul>
                                     <li>Type: <%=expression.DOCType%></li>    
@@ -199,9 +196,15 @@
                             </ul>
                 <h5 style="font-size: 1em">GHTF Market Clearance</h5> 
                             <ul>
-                                <li><strong>CE certification</strong>:    <a href="/expressions/<%=expression._id%>/ce"><%=expression.CEcert %>  </a>  
-                                </li>
+                                <li><strong>CE certification</strong>:     
+                                    <% if(expression.CEcert ==="Yes" ) {%>
+                                    <a href="/expressions/<%=expression._id%>/ce"><%=expression.CEcert %></a>    
                                     
+                                    <% } else{ %>
+                                        <%=expression.CEcert %>
+                                        <% } %>
+                                </li>
+            
                                 <div class="row">
                                 <div class="col-sm-12">
                                     <% if(expression.CEcert ==="Yes" ) {%>
