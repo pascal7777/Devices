@@ -1,7 +1,6 @@
 <% layout('layouts/boilerplate')%>
     
 <div class="row">
-    
     <div class="col-sm-8">
         <div class="card">
         <div class="card-body">
@@ -91,155 +90,145 @@
     </div>
 </div> 
     
-
-
 <br>
+
 <div class="row">
-
-    <div class="col-sm-6">
-            <div class="card">
-              <div class="card-body">
-
-    <h5 style="font-size: 1em">Order Reference</h5>
-                <ul>
-                <li>GPU Reference:  <%= expression.gpuRef%> </li>
-                <li>Supplier Quotation: <%= expression.quotation%></li>
-                </ul>
-     <h5 style="font-size: 1em">Manufacturer</h5>
-                <ul>
-                <li><bold><%= expression.manufacturer%></bold>
-                </li>
-                <li><%= expression.mfAddress%> - <bold><%= expression.mfCountry%></bold>
-                </li>
-                </ul>
-    <h5 style="font-size: 1em">Device Model/Brand</h5>
-                <ul>
-                <li>
-                Model: <%= expression.deviceModel%>
-                </li>
-                <li>Catalogue nr: <%= expression.catnr%> 
-                </li>
-                <li>Brand Name: <%= expression.brandName%> 
-                </li>
-                </ul>
-    <h5 style="font-size: 1em">QMS ISO Certification</h5>
-                
-                <ul>
-                    <li><div class="row">                   
-                        <div class="col-sm-12">
-                    <strong>ISO 9001:2015</strong>:
-                        <a href="/expressions/<%=expression._id%>/iso9001"><%=expression.iso9001 %></a>
-                        </div>
-                        </div>
-                    </li>  
-                    <% if(expression.iso9001 ==="Yes" ) {%>
-                    <div class="row">
-                   
-                    <div class="col-sm-12">
-                        <ul>
-                        <li>Valid to: <%=expression.iso9001validTo.toDateString()%>
-                        </li>
-                                <%  if( expression.iso9001validTo < Date.now())  {%>
-                                <h3 style="font-size: 1em"><em>  <span style="color:rgb(157, 6, 6)">expired <%= moment(expression.iso9001validTo).fromNow() %></span></em></h3>  
-                               
-                                <% } else if (expression.iso9001validTo < Date.now()+1000*60*60*24*30) { %>
-                                <h3 style="font-size: 1em"><em>  <span style="color:rgb(233, 153, 5)">expires <%= moment(expression.iso9001validTo).fromNow() %></span></em></h3>  
-                                
-                                <% } else{ %>
-                                    <h3 style="font-size: 1em"><em>(<%= moment(expression.iso9001validTo).fromNow() %>)</em></h3>  
-                                <% } %>
-                        </ul>
-                    </div>
-                        <% } %>
-                    </div>
-
-
-
-                    <li><div class="row">                   
-                        <div class="col-sm-12">
-                    <strong>ISO 13485:2016</strong>:
-                        <a href="/expressions/<%=expression._id%>/iso13485"><%=expression.iso13485%></a>
-                        </div>
-                    </div>
-                    </li>   
-                    <% if(expression.iso13485 ==="Yes" ) {%>
-                    <div class="row">
-                    <div class="col-sm-12">
-                        <ul>
-                        <li>Valid to: <%=expression.iso13485validTo.toDateString()%>
-                        </li>
-                        <%  if( expression.iso13485validTo < Date.now())  {%>
-                            <h3 style="font-size: 1em"><em>  <span style="color:rgb(157, 6, 6)">expired <%= moment(expression.iso13485validTo).fromNow() %></span></em></h3>  
-                           
-                            <% } else if (expression.iso13485validTo < Date.now()+1000*60*60*24*30) { %>
-                            <h3 style="font-size: 1em"><em>  <span style="color:rgb(233, 153, 5)">expires <%= moment(expression.iso13485validTo).fromNow() %></span></em></h3>  
-                            
-                            <% } else{ %>
-                                <h3 style="font-size: 1em"><em>(<%= moment(expression.iso13485validTo).fromNow() %>)</em></h3>  
-                            <% } %>
-                        </ul>
-                    </div>
-                        <% } %>
-                    </div>
-                </ul>
-            
-    <h5 style="font-size: 1em"><strong>EU Declaration Conformity</strong></h5>
-            <ul>
-                <li>EU DOC:    <%=expression.DOC%>       </li> 
-                
-
-                <% if(expression.DOC==="Yes" ) {%>
-                <ul>
-                <li>Type: <%=expression.DOCType%></li>    
-                <li>Signed by Manufacturer?:    <%= expression.DOCSign%> </li>   <li>Device Classification: Class <%=expression.DOCMdClass%>  <%=expression.DOCIvdClass%> </li>
-                <% } %>
-                <li>Other: <%=expression.DOCEq%></li> </li>
-                </ul>
-                
-            </ul>
-
-    <h5 style="font-size: 1em">GHTF Market Clearance</h5> 
-            <ul>
-                    <li><strong>CE certification</strong>:    <a href="/expressions/<%=expression._id%>/ce"><%=expression.CEcert %>  </a>  </li>
-                    <% if(expression.CEcert ==="Yes" ) {%>
-                    <div class="row">
-                    <div class="col-sm-12">
-                        <ul>
-                        <li>Valid to: <%=expression.CEvalidTo.toDateString()%>
-                        </li>
-                        <%  if( expression.CEvalidTo < Date.now())  {%>
-                            <h3 style="font-size: 1em"><em>  <span style="color:rgb(157, 6, 6)">expired <%= moment(expression.CEvalidTo).fromNow() %></span></em></h3>  
-                           
-                            <% } else if (expression.CEvalidTo < Date.now()+1000*60*60*24*30) { %>
-                            <h3 style="font-size: 1em"><em>  <span style="color:rgb(233, 153, 5)">expires <%= moment(expression.CEvalidTo).fromNow() %></span></em></h3>  
-                            
-                            <% } else{ %>
-                                <h3 style="font-size: 1em"><em>(<%= moment(expression.CEvalidTo).fromNow() %>)</em></h3>  
-                            <% } %>
-                        </ul>
-                    </div>
-                    
-                        <% } %>
-                    </div>
-                    
-            </ul>
-
-    <h5 style="font-size: 1em">Supporting Documents</h5> 
-                <ul>
-                <li> 
-                Image(s) of label/tag or primary packaging:     <%=expression.imageLabel%> 
-                </li> 
-                <li>
-                Other Documentation:     <%=expression.otherDoc%> 
-                </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    
+   
     <div class="col-sm-6">
         <div class="card">
-          <div class="card-body">
+        <div class="card-body">
+                <h5 style="font-size: 1em">Order Reference</h5>
+                            <ul>
+                            <li>GPU Reference:  <%= expression.gpuRef%> </li>
+                            <li>Supplier Quotation: <%= expression.quotation%></li>
+                            </ul>
+                <h5 style="font-size: 1em">Manufacturer</h5>
+                            <ul>
+                            <li><bold><%= expression.manufacturer%></bold>
+                            </li>
+                            <li><%= expression.mfAddress%> - <bold><%= expression.mfCountry%></bold>
+                            </li>
+                            </ul>
+                <h5 style="font-size: 1em">Device Model/Brand</h5>
+                            <ul>
+                            <li>
+                            Model: <%= expression.deviceModel%>
+                            </li>
+                            <li>Catalogue nr: <%= expression.catnr%> 
+                            </li>
+                            <li>Brand Name: <%= expression.brandName%> 
+                            </li>
+                            </ul>
+                <h5 style="font-size: 1em">QMS ISO Certification</h5>
+                            <ul>
+                                <li>
+                                <div class="row">                   
+                                    <div class="col-sm-12">
+                                        <strong>ISO 9001:2015</strong>:
+                                        <a href="/expressions/<%=expression._id%>/iso9001"><%=expression.iso9001 %></a>
+                                    </div>
+                                </div>
+                                        </li>
+                                        <% if(expression.iso9001 ==="Yes" ) {%>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <ul>
+                                        <li>Valid to: <%=expression.iso9001validTo.toDateString()%>
+                                        </li>
+                                                <%  if( expression.iso9001validTo < Date.now())  {%>
+                                                <h3 style="font-size: 1em"><em>  <span style="color:rgb(157, 6, 6)">expired <%= moment(expression.iso9001validTo).fromNow() %></span></em></h3>  
+                                            
+                                                <% } else if (expression.iso9001validTo < Date.now()+1000*60*60*24*30) { %>
+                                                <h3 style="font-size: 1em"><em>  <span style="color:rgb(233, 153, 5)">expires <%= moment(expression.iso9001validTo).fromNow() %></span></em></h3>  
+                                                
+                                                <% } else{ %>
+                                                    <h3 style="font-size: 1em"><em>(<%= moment(expression.iso9001validTo).fromNow() %>)</em></h3>  
+                                                <% } %>
+                                        </ul>
+                                    </div>
+                                        <% } %>
+                                </div>
+                                <li>
+                                <div class="row">                   
+                                    <div class="col-sm-12">
+                                        <strong>ISO 13485:2016</strong>:
+                                        <a href="/expressions/<%=expression._id%>/iso13485"><%=expression.iso13485%></a>
+                                    </div>
+                                </div>
+                                </li>   
+                                    <% if(expression.iso13485 ==="Yes" ) {%>
+                                
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <ul>
+                                        <li>Valid to: <%=expression.iso13485validTo.toDateString()%>
+                                        </li>
+                                        <%  if( expression.iso13485validTo < Date.now())  {%>
+                                            <h3 style="font-size: 1em"><em>  <span style="color:rgb(157, 6, 6)">expired <%= moment(expression.iso13485validTo).fromNow() %></span></em></h3>  
+                                        
+                                            <% } else if (expression.iso13485validTo < Date.now()+1000*60*60*24*30) { %>
+                                            <h3 style="font-size: 1em"><em>  <span style="color:rgb(233, 153, 5)">expires <%= moment(expression.iso13485validTo).fromNow() %></span></em></h3>  
+                                            
+                                            <% } else{ %>
+                                                <h3 style="font-size: 1em"><em>(<%= moment(expression.iso13485validTo).fromNow() %>)</em></h3>  
+                                            <% } %>
+                                        </ul>
+                                    </div>
+                                            <% } %>
+                                </div>
+                            </ul>
+                <h5 style="font-size: 1em"><strong>EU Declaration Conformity</strong></h5>
+                            <ul>
+                                    <li>EU DOC:    <%=expression.DOC%>       </li> 
+                                    
+
+                                    <% if(expression.DOC==="Yes" ) {%>
+                                    <ul>
+                                    <li>Type: <%=expression.DOCType%></li>    
+                                    <li>Signed by Manufacturer?:    <%= expression.DOCSign%> </li>   <li>Device Classification: Class <%=expression.DOCMdClass%>  <%=expression.DOCIvdClass%> </li>
+                                    <% } %>
+                                    <li>Other: <%=expression.DOCEq%></li> </li>
+                                    </ul>         
+                            </ul>
+                <h5 style="font-size: 1em">GHTF Market Clearance</h5> 
+                            <ul>
+                                    <li><strong>CE certification</strong>:    <a href="/expressions/<%=expression._id%>/ce"><%=expression.CEcert %>  </a>  </li>
+                                    <% if(expression.CEcert ==="Yes" ) {%>
+                                    <div class="row">
+                                    <div class="col-sm-12">
+                                        <ul>
+                                        <li>Valid to: <%=expression.CEvalidTo.toDateString()%>
+                                        </li>
+                                        <%  if( expression.CEvalidTo < Date.now())  {%>
+                                            <h3 style="font-size: 1em"><em>  <span style="color:rgb(157, 6, 6)">expired <%= moment(expression.CEvalidTo).fromNow() %></span></em></h3>  
+                                        
+                                            <% } else if (expression.CEvalidTo < Date.now()+1000*60*60*24*30) { %>
+                                            <h3 style="font-size: 1em"><em>  <span style="color:rgb(233, 153, 5)">expires <%= moment(expression.CEvalidTo).fromNow() %></span></em></h3>  
+                                            
+                                            <% } else{ %>
+                                                <h3 style="font-size: 1em"><em>(<%= moment(expression.CEvalidTo).fromNow() %>)</em></h3>  
+                                            <% } %>
+                                        </ul>
+                                    </div>
+                                        <% } %>
+                                    </div>
+                            </ul>
+                <h5 style="font-size: 1em">Supporting Documents</h5> 
+                            <ul>
+                                    <li> 
+                                    Image(s) of label/tag or primary packaging:     <%=expression.imageLabel%> 
+                                    </li> 
+                                    <li>
+                                    Other Documentation:     <%=expression.otherDoc%> 
+                                    </li>
+                            </ul>
+        </div>
+        </div>
+    
+
+    <div class="col-sm-6">
+        <div class="card">
+        <div class="card-body">
 
               Uploaded Docs:
                
@@ -263,11 +252,10 @@
                     </a>
                     <% } %>
                 </div>
-                 
-                    
-            </div>
         </div>
-    </div> 
+        </div>
+    </div>
+
 </div> 
 
 <br>

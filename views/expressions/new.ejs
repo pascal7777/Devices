@@ -220,63 +220,63 @@
     </div>
 
     <div class="row">
+        <div class="col-4">
+                <div class="mb-3">
+                <label class="form-label" for="DOCType" class="form-label">DOC Standard</label>
+                <input class="form-control" list="DOCstandard" name="DOCType" id="DOCType" placeholder="Type to search...">
+                <datalist id="DOCstandard">
+                    <option value="(MDR)2017/745">
+                    <option value="(MDD)93/42/EEC">
+                    <option value="(IVDD)98/79 EC">
+                    <option value="(IVDR)2017/746">   
+                    </datalist>
+                </div>
+        </div>
+
+        <div class="col-4">
+            <div class="mb-3">
+                <label class="form-label" for="DOCSign" class="form-label">DOC Signed by Manufacturer? (Y/N)</label>
+                <input class="form-control" list="yesno7" name="DOCSign" id="DOCSign" placeholder="Type to search...">
+                <datalist id="yesno7">
+                    <option value="Yes">
+                    <option value="No">
+                    </datalist>
+            </div>
+        </div>
+
+        <% if(product.type==="MD" ) {%>
+        <div class="col-4">
+            <div class="mb-3">
+                <label class="form-label" for="DOCMdClass" class="form-label">MD Classification (based on DOC)</label>
+                <input class="form-control" list="mdClass" name="DOCMdClass" id="DOCMdClass" placeholder="Type to search...">
+                <datalist id="mdClass">
+                    <option value="I">
+                        <option value="IIa">
+                            <option value="IIb">
+                            <option value="III">
+                                <option value="IV">
+                                    <option value="NA">
+                </datalist>
+            </div>
+        </div>
+        <% } %>
+
+
+    <% if(product.type === "IVD" ) {%>
     <div class="col-4">
         <div class="mb-3">
-            <label class="form-label" for="DOCType" class="form-label">DOC Standard</label>
-            <input class="form-control" list="DOCstandard" name="DOCType" id="DOCType" placeholder="Type to search...">
-            <datalist id="DOCstandard">
-                <option value="(MDR)2017/745">
-                <option value="(MDD)93/42/EEC">
-                <option value="(IVDD)98/79 EC">
-                <option value="(IVDR)2017/746">   
-                </datalist>
-        </div>
-    </div>
-
-    <div class="col-4">
-        <div class="mb-3">
-            <label class="form-label" for="DOCSign" class="form-label">DOC Signed by Manufacturer? (Y/N)</label>
-            <input class="form-control" list="yesno7" name="DOCSign" id="DOCSign" placeholder="Type to search...">
-            <datalist id="yesno7">
-                <option value="Yes">
-                <option value="No">
-                </datalist>
-        </div>
-    </div>
-
-<% if(product.type==="Medical Device" ) {%>
-<div class="col-4">
-    <div class="mb-3">
-        <label class="form-label" for="DOCMdClass" class="form-label">MD Classification (based on DOC)</label>
-        <input class="form-control" list="mdClass" name="DOCMdClass" id="DOCMdClass" placeholder="Type to search...">
-        <datalist id="mdClass">
-            <option value="I">
-                <option value="IIa">
-                    <option value="IIb">
-                    <option value="III">
-                        <option value="IV">
+            <label class="form-label" for="DOCIvdClass" class="form-label">IVD Classification (based on DOC)</label>
+            <input class="form-control" list="ivdClass" name="DOCIvdClass" id="DOCIvdClass" placeholder="Type to search...">
+            <datalist id="ivdClass">
+                <option value="A">
+                    <option value="B">
+                        <option value="C">
+                        <option value="D">
                             <option value="NA">
-        </datalist>
+                </datalist>
+        </div>
     </div>
-</div>
-<% } %>
-
-
-<% if(product.type==="In-vitro Diagnostic Medical Device" ) {%>
-<div class="col-4">
-    <div class="mb-3">
-        <label class="form-label" for="DOCIvdClass" class="form-label">IVD Classification (based on DOC)</label>
-        <input class="form-control" list="ivdClass" name="DOCIvdClass" id="DOCIvdClass" placeholder="Type to search...">
-        <datalist id="ivdClass">
-            <option value="A">
-                <option value="B">
-                    <option value="C">
-                    <option value="D">
-                        <option value="NA">
-            </datalist>
-    </div>
-</div>
-<% } %>
+    <% } %>
 
 </div>
 
@@ -311,8 +311,7 @@
             <div class="col-2"><a href="https://webgate.ec.europa.eu/single-market-compliance-space/#/notified-bodies" target="_blank">Check on EU NB Database</a></label>
             </div>
         </div>
-        <input class="form-control" list="notifiedbody" name="nBody" id="nBody" placeholder="Type to search by NB #..."
-            required>
+        <input class="form-control" list="notifiedbody" name="nBody" id="nBody" placeholder="Type to search by NB #...">
         <datalist id="notifiedbody">
             <option value="NB 0044 - TÜV NORD CERT GmbH - Germany (93/42/EEC MDD)">
                 <option value="NB 0050 - National Standards Authority of Ireland (NSAI) - Ireland (93/42/EEC MDD)">
@@ -455,8 +454,8 @@
         <input class="form-control" list="yesno9" name="CEonLine" id="CEonLine" placeholder="Type to search...">
         <datalist id="yesno9">
             <option value="Yes, successfull">
-                <option value="No, not successfull">
-                <option value="Online check not available">  
+            <option value="No, not successfull">
+            <option value="Online check not available">  
             </datalist>
     </div></div>
     </div>
