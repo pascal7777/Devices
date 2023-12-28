@@ -16,22 +16,17 @@
    
     <form action="/expressions/<%=expression._id%>?_method=PUT" method="POST" novalidate class = "validated-form" enctype="multipart/form-data">
 
-    <div class="row">
+   
 
-        <div class="col-6">
-            <div>
+        <div class="mb-3">
                 <label class="form-label" for="number13485">Certificate Nr. <br>(<span style="color:rgb(8, 96, 249)"><%=expression.number13485%></span>)</label>
                 <p></p>
                 <input class="form-control" type="text" name="expression[number13485]" id="number13485">
-            </div>
+           
                 <p style="margin-top: 0; color: rgb(0, 34, 255);font-size: 0.8em;"><em>optional</em></p>
         </div>
 
-        <div class="col-6">
-
-                <div class="row">
-
-                <div class="col-12">
+        <div class="mb-3">
                     <label class="form-label" for="nBody" class="form-label">
                     Notified Body <span style="color:rgb(8, 96, 249)">"<%=expression.nBody%>"</span></label>
                     <p> <a href="https://webgate.ec.europa.eu/single-market-compliance-space/#/notified-bodies" target="_blank">EU Notified Bodies</a> </p>
@@ -164,53 +159,43 @@
                                                         <option value="Other">
                 </datalist>
                 <p style="margin-top: 0; color: rgb(0, 34, 255);font-size: 0.8em;"><em>optional</em></p>
-                </div>  
-        
         </div>  
-    </div>   
 
-    <br>
-
-    <div class="row">
-        <div class="col-6">
-           
+    <div class="mb-3">      
             <label class="form-label" for="CEvalidTo">'Valid to' date <br>(<span style="color:rgb(8, 96, 249)"><%=expression.CEvalidTo.toDateString()%>)</span></label>
-            <input class="form-control" type="date" name="expression[CEvalidTo]" id="CEvalidTo">
-                
+            <input class="form-control" type="date" name="expression[CEvalidTo]" id="CEvalidTo">          
                 <p style="margin-top: 0; color: red;font-size: 0.8em;"><em>required</em></p>
-              
-        </div>   
+    </div>   
       
                         
                         
-        <div class="col-6">
+    <div class="mb-3">
             <label class="form-label" for="CEonLine" class="form-label">Verified online <br> (<span style="color:rgb(8, 96, 249)"><%=expression.CEonLine%></span>)</label>
             <input class="form-control" list="yesno2" name="expression[CEonLine]" id="CEonLine">
             <datalist id="yesno2">
             <option value="Yes, successfull">
             <option value="No, not successfull">
             <option value="Online check not available">
-            <option value="Not verified (yet)"></option>
+            <option value="Not verified (yet)">
             </datalist>
             <p style="margin-top: 0; color: rgb(0, 34, 255);font-size: 0.8em;"><em>optional</em></p>
-        </div>  
-    </div> 
+    </div>  
+   
 
-<div class="mt-3">
-
-    <div class="row">     
-        <div class="col-6">
+    <div class="mb-3">
             <div>
                 <button class=" btn btn-warning btn-sm">Confirm changes</button>
             </div>
             
         <br> 
     
-            <div><a class="btn btn-primary btn-sm" href="/expressions/<%=expression._id%>" role="button">Go Back</a></div>
-        </div>  
+            <div><a class="btn btn-primary btn-sm" href="/expressions/<%=expression._id%>" role="button">Go Back</a>
+            </div>
+            <br><br>
     </div>
+    
 </div>
-    </form>
+</form>
 
 </div>
   
