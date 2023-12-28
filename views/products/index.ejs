@@ -48,7 +48,19 @@
             <%= product.cat%>
             </td>
             <td>
-                (<%=product.expressions.length%>) 
+
+            <%  if( product.expressions.length===0)  {%>
+             
+                <% } else{ %> 
+                    (<%=product.expressions.length%>) 
+            
+            <% } %> 
+
+
+
+
+
+               
             </td>
             
             <td>
