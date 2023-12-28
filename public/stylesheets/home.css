@@ -51,7 +51,7 @@ body {
 
 
 .button {
-        background-color:rgba(150,245,242,0.6);
+        background-color:rgba(150,245,242,0.4);
         border: none;
         color: white;
         padding: 6px 12px;
@@ -63,5 +63,5 @@ body {
 
 .button:hover{
     
-        color: rgba(150,245,242,0.1);
+        color: rgba(150,245,242,0.9);
     }
