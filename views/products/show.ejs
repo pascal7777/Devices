@@ -109,7 +109,7 @@
                             <li>
                                 <p style="font-size: 1.2em"> <span style="color:rgb(119, 119, 121)"> <%=expression.supplier%> (<%=expression.createdAt.toDateString()%>)</span></p>
                             </li>
-                             </ul>
+                            </ul>
                             <% } %> 
                     <% } %> 
             </div>
@@ -120,8 +120,13 @@
         <div class="col-sm-5">
         <div class="card">
             <div class="card-body">
-                  <p style="font-size: 1em"><span style="color:rgb(119, 119, 121)">Suppliers interested to bid for supply of this medical device, can respond by completing and submitting a new EOI (Login required).</span></p>
+
+                <%  if( product.close > Date.now())  {%>
+
+                <p style="font-size: 1em"><span style="color:rgb(119, 119, 121)">Suppliers interested to bid for supply of this medical device, can respond by completing and submitting a new EOI (Login required).</span></p>
                 <p><a class="btn btn-sm btn-primary" href="/products/<%=product._id%>/expressions/new">Go to EOI Form</a> </p> 
+
+                <% } %>
             </div>
         </div>
     </div>
