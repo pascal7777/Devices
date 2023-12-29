@@ -14,9 +14,6 @@
                     Supplier
                     </th>
                     <th>
-                    Distribution 
-                    </th>
-                    <th>
                     Device
                     </th>
                     <th>
@@ -24,6 +21,9 @@
                     </th>
                     <th>
                     Manufactured in
+                    </th>
+                    <th>
+                    DOC Standard 
                     </th>
                     <th>
                    Dossier Status
@@ -35,8 +35,7 @@
             </thead>
 
             <tbody>
-            <tr>
-                <% for (let expression of expressions){%>
+            <tr><% for (let expression of expressions){%>
                 <td>
                     <%  if( currentUser && expression.author.equals(currentUser._id) || currentUser &&
                         currentUser.isAdmin || currentUser &&
@@ -47,16 +46,16 @@
                         <% } %>
                 </td>
                 <td>
-                    <%= expression.supCountry%>
-                </td>
-                <td>
-                    <%=expression.product.type%>
+                    <%=expression.product.type%> 
                 </td>
                 <td>
                     <%=expression.product.name%>
                 </td>
                 <td>
                     <%=expression.mfCountry%>
+                </td>
+                <td>
+                    <%=expression.DOCType%>
                 </td>
                 <td>
                     <% if(expression.status==="Initiated" ) {%>
