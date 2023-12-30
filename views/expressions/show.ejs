@@ -157,11 +157,11 @@
                                         <% } %>
                                 </div>
                                 <li><strong>ISO 13485:2016</strong>:
-                                    <% if(expression.iso13485 ==="Yes" ) {%>   
-                                        <a href="/expressions/<%=expression._id%>/iso13485"><%=expression.iso13485 %></a>
+                                    <% if(expression.iso13485 !=="Yes" && ((expression.product.type ==="MD" || expression.product.type ==="IVD" ))) {%>   
+                                        <%=expression.iso13485%>
+                                        <p><span style="color:rgb(157, 6, 6)">ISO13485 is required</span></p>
                                         <% } else{ %>
-                                            <%=expression.iso13485%>
-                                            <p><span style="color:rgb(157, 6, 6)">ISO13485 is required</span></p>
+                                            <a href="/expressions/<%=expression._id%>/iso13485"><%=expression.iso13485 %></a>
                                             <% } %>
                                 </li>  
                                     
