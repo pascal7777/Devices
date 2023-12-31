@@ -54,11 +54,11 @@ body {
         background-color:rgba(150,245,242,0.4);
         border: none;
         color: white;
-        padding: 0.5vm 0.5vw;
+        padding: 1vm 1vw;
         text-align: center;
         text-decoration: none;
         display: inline-block;
-        font-size: 2vw;
+        font-size: 1vw;
       }
 
 .button:hover{
