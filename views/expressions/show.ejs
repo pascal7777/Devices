@@ -160,15 +160,19 @@
                                     <% if(expression.iso13485 !=="Yes" && ((expression.product.type ==="MD" || expression.product.type ==="IVD" || expression.product.type ==="PPE" ))) {%>   
                                         <%=expression.iso13485%>
                                         <p><span style="color:rgb(157, 6, 6)">ISO13485 is required</span></p>
+                                    
+                                        <% } else if (expression.iso13485 !=="Yes" && expression.product.type ==="PPE - non medical" ) { %>
+                                            <%=expression.iso13485 %>
+                                            
                                         <% } else{ %>
-                                            <a href="/expressions/<%=expression._id%>/iso13485"><%=expression.iso13485 %></a>
-                                            <% } %>
+                                                <a href="/expressions/<%=expression._id%>/iso13485"><%=expression.iso13485 %></a>
+                                        <% } %>
+                                  
+                                
                                 </li>  
                                     
                                 <% if(expression.iso13485 ==="Yes" ) {%>
-                                
-
-                                        <ul>
+                                    <ul>
                                         <li>Valid to: <%=expression.iso13485validTo.toDateString()%>
                                         </li>
                                         <%  if( expression.iso13485validTo < Date.now())  {%>
@@ -180,20 +184,23 @@
                                             <% } else{ %>
                                                 <h3 style="font-size: 1em"><em>(<%= moment(expression.iso13485validTo).fromNow() %>)</em></h3>  
                                             <% } %>
-                                        </ul>
-                                        <% } %> 
+                                            <% } %> 
+                                    </ul>
+                                    
                             </ul>
                 <h5 style="font-size: 1em"><strong>EU Declaration Conformity</strong></h5>
                             <ul>
                                     <li>EU DOC:    <%=expression.DOC%>       </li> 
                                     <% if(expression.DOC==="Yes" ) {%>
                                              
-                                    <% if((expression.product.type ==="MD" && (expression.DOCType ==="(IVDD)98/79 EC" || expression.DOCType ==="(IVDR)2017/746"  )) || (expression.product.type ==="IVD" && (expression.DOCType ==="(MDR)2017/745" || expression.DOCType ==="(MDD)93/42/EEC"  ))){%>   
+                                    <% if((expression.product.type ==="MD" && (expression.DOCType ==="(IVDD)98/79 EC" || expression.DOCType ==="(IVDR)2017/746"  )) || (expression.product.type ==="IVD" && (expression.DOCType ==="(MDR)2017/745" || expression.DOCType ==="(MDD)93/42/EEC"  )) || (expression.product.type ==="PPE" && (expression.DOCType !=="(WHO) Technical specifications of PPE for COVID-19 (Nov 2020)"))){%>   
                                             <p><span style="color:rgb(157, 6, 6)">Incompatible DOC for Device type</span></p>
                                             <% } else{ %>
                                                 <ul>
                                                     <li>Type: <%=expression.DOCType%></li>    
+                                                    <% if(expression.product.type ==="MD" || expression.product.type ==="IVD"){%> 
                                                     <li>Device Classification: Class <%=expression.DOCMdClass%>  <%=expression.DOCIvdClass%> </li>
+                                                    <% } %>
                                                 </ul>
                                             <% } %>
                                     <% } %>
@@ -201,15 +208,20 @@
                                     <% if(expression.DOC!=="Yes" && (expression.product.type ==="MD" || expression.product.type ==="IVD" )) {%>
                                         <p><span style="color:rgb(157, 6, 6)">DOC from Manufacturer required</span></p>
                                     <% } %>
+                                     <li>Other Declaration or equivalent: <%=expression.DOCEq%></li>
                             </ul>
                 <h5 style="font-size: 1em">GHTF Market Clearance</h5> 
                             <ul>
                                 <li><strong>CE certification</strong>:     
-                                    <% if(expression.CEcert ==="Yes" ) {%>
-                                    <a href="/expressions/<%=expression._id%>/ce"><%=expression.CEcert %></a>    
+                                    <% if(expression.CEcert !=="Yes" && ((expression.product.type ==="MD" || expression.product.type ==="IVD" || expression.product.type ==="PPE" ))) {%>   
+                                        <%=expression.CEcert%>
+                                        <p><span style="color:rgb(157, 6, 6)">EU Market clearance (CE certification) is required</span></p>
                                     
-                                    <% } else{ %>
-                                        <%=expression.CEcert %>
+                                        <% } else if (expression.CEcert !=="Yes" && expression.product.type ==="PPE - non medical" ) { %>
+                                            <%=expression.CEcert %>
+                                            
+                                        <% } else{ %>
+                                                <a href="/expressions/<%=expression._id%>/ce"><%=expression.CEcert %></a>
                                         <% } %>
                                 </li>
             
