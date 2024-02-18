@@ -91,16 +91,13 @@ const expressionSchema = new Schema({
         type: String
     },
     DOCSign:{
-        type: String,
-        enum: ['Yes','No','none']
+        type: String
     },
     DOCMdClass:{
-        type: String,
-        enum: ['I','IIa','IIb','III','IV','NA','none']
+        type: String
     },
     DOCIvdClass:{
-        type: String,
-        enum: ['A','B','C','D','NA','none']
+        type: String
     },
     DOCEq:{
         type: String
