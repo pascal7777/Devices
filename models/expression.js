@@ -85,7 +85,8 @@ const expressionSchema = new Schema({
         type: String
     },
     DOC:{
-        type: String
+        type: String,
+        enum: ['Yes','No', 'N/A']
     },
     DOCType:{
         type: String
