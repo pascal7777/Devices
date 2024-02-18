@@ -212,6 +212,7 @@
             <datalist id="yesno5">
                 <option value="Yes">
                 <option value="No">
+                    <option value="N/A">
                 </datalist>
         </div>
     </div>
@@ -219,13 +220,14 @@
     <div class="row">
         <div class="col-4">
                 <div class="mb-3">
-                <label class="form-label" for="DOCType" class="form-label">DOC Standard</label>
+                <label class="form-label" for="DOCType" class="form-label">Declared Conformity Standard</label>
                 <input class="form-control" list="DOCstandard" name="DOCType" id="DOCType" placeholder="Type to search...">
                 <datalist id="DOCstandard">
                     <option value="(MDR)2017/745">
                     <option value="(MDD)93/42/EEC">
                     <option value="(IVDD)98/79 EC">
                     <option value="(IVDR)2017/746">   
+                    <option value="(WHO) Technical specifications of PPE for COVID-19 (Nov 2020)">
                     </datalist>
                 </div>
         </div>
@@ -274,6 +276,8 @@
         </div>
     </div>
     <% } %>
+
+    
 
 </div>
 
